@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poncho's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+</head>
+<body>
+    <div class="back" id="back" onclick="de()"></div>
+    <img src="image/slide_tet.png" alt="" class="slide_tet" id="slide_tet" onclick="de()">
+    <img src="image/slide_2048.png" alt="" class="slide_tet" id="slide_2048" onclick="de()">
+    <img src="image/slide_osero.png" alt="" class="slide_tet" id="slide_osero" onclick="de()">
+    <img src="image/slide_por.png" alt="" class="slide_tet" id="slide_por" onclick="de()">
+    <img src="image/slide_cam.png" alt="" class="slide_tet" id="slide_cam" onclick="de()">
+    <div class="header">Portfolio</div>
+    <div class="header_ab">Portfolio</div>
+    <table>
+        <tr>
+            <td class="" onclick="location.href='#about'">About</td>
+            <td class="left" onclick="location.href='#skills'">Skills</td>
+            <td class="left" onclick="location.href='#works'">Works</td>
+            <td class="left" onclick="location.href='#goals'">Points</td>
+        </tr>
+    </table>
+    <div class="row">
+        <div width="150px" height="600px">
+                <img src="image/left.png" alt="" width="100px" height="300px" onclick="left()" class="arrow">
+        </div>
+        <div class="slide" class="" align="center">
+            <img src="image/programming.png" alt="programming" width="1100px" height="500px" id="img0" class="img0" onclick="location.href='#pron'" align="center">
+            <img src="image/proN.jpg" alt="" width="1100px" height="500px" id="img1" class="img1" onclick="location.href='#prog'" align="center">
+        </div>
+        <div width="150px" height="600px">
+                <img src="image/right.png" alt="" width="110px" height="310px" class="right_arrow" onclick="right()">
+        </div>
+    </div>
+    <div class="about" id="about">
+        <div align="center">
+            <h1 class="white">About</h1>
+            <div class="border"></div>
+            <img src="image/icon.png" alt="" width="200px" height="200px" class="icon">
+            <p>名前：森元 悠登　　　Slack名：ぽんちょ</p>
+            <p>所属：N/S高等学校 柏キャンパス</p>
+        </div>
+        <div>
+
+        </div>
+    </div>  
+    <div class="skills" id="skills" align="center">
+        <div>
+            <h1 class="pink">Skills</h1>
+            <div class="border_p"></div>
+            <div class="tab">
+                <div class="skill_tab_before" onclick="before()" id="before">Before</div>
+                <div class="skill_tab_after" onclick="after()" id="after">After</div>
+            </div>
+        </div>
+        <div>
+            <table align="center">
+                <tr>
+                    <div class="skill" id="html"><p class="ja" id="h">html　　★☆☆☆☆</p><p class="h" id="h_h">基礎が欠如していて</p><p class="h1" id="h1_h">思ったように作ることができない</p></div>
+                    <div class="skill-mar" id="css"><p class="ja" id="c">css　　★☆☆☆☆</p><p class="h" id="h_c">要素を真ん中に揃えることもままならない</p><p class="h1" id="h1_c">　</p></div>
+                </tr>
+                <br>
+                <tr>
+                    <div class="skill" id="js"><p class="ja" id="j">Javascript　　★★☆☆☆</p><p class="h" id="h_j">テトリス制作を途中で断念した</p><p class="h1" id="h1_j">　</p></div>
+                    <div class="skill-mar" id="en"><p class="ja" id="e"> English　　★☆☆☆☆</p><p class="h" id="h_e">英検未取得</p><p class="h1" id="h1_e">なんとなくで英語を覚えていた</p></div>
+                </tr>
+            </table>
+        </div>
+    </div>  
+    <div class="works" id="works">
+        <div>
+            <h1 class="white">Works</h1>
+            <div class="border"></div>
+        </div>
+        <div>
+            <table align="center" class="work_table">
+                <tr>
+                    <h2 align="center" class="projectN" id="pron">ProjectN</h2>
+                </tr>
+                <tr>
+                    <div class="work">
+                        <a href="business.html"><img src="image/horensou.png" alt="" width="300px" height="300"></a>
+                        <h3>ビジネスマナーポスター</h3>
+                    </div>
+                    <div class="work">
+                        <img src="image/kougei.png" alt="" width="300px" height="300">
+                        <h3>伝統的工芸品をプロモーション</h3>
+                    </div>
+                    <div class="work">
+                        <img src="image/danrippa.png" alt="" width="300px" height="300">
+                        <h3>身近な日用品で防災</h3>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="work">
+                        <img src="image/animal.png" alt="" width="300px" height="300">
+                        <h3>ステッカーでペット問題を発信</h3>
+                    </div>
+                    <div class="work">
+                        <img src="image/fuji.png" alt="" width="300px" height="300">
+                        <h3>日本の古典を現代的にアレンジする</h3>
+                    </div>
+                    <div class="work">
+                        <img src="image/sikaku.png" alt="" width="300px" height="300">
+                        <h3>オプティカルイリュージョン</h3>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="work">
+                        <img src="image/space.png" alt="" width="300px" height="300">
+                        <h3>宇宙の未来をつくるエンタメビジネス</h3>
+                    </div>
+                    <div class="work">
+                        <img src="image/page.png" alt="" width="300px" height="300">
+                        <h3>オンライン版リアル脱出ゲームを作る</h3>
+                    </div>
+                    <div class="work">
+                        <img src="image/tv.png" alt="" width="300px" height="300">
+                        <h3>ローカルSDGsの特集番組を作る</h3>
+                    </div>
+                </tr>
+                <tr>
+                    <h2 align="center" class="programing" id="prog">Programing</h2>
+                </tr>
+                <tr>
+                    <div class="work">
+                        <img src="image/osero.png" alt="" width="300px" height="300" onclick="osero_img()">
+                        <h3>オセロ</h3>
+                    </div>
+                    <div class="work">
+                        <img src="image/2048.png" alt="" width="300px" height="300" onclick="nizero_img()">
+                        <h3>2048</h3>
+
+                    </div>
+                    <div class="work">
+                        <img src="image/tetorisu.png" alt="" width="300px" height="300" onclick="tetris_img()">
+                        <h3>テトリス</h3>
+
+                    </div>
+                </tr>
+                <tr>
+                    <div class="work">
+                        <img src="image/portfolio.png" alt="" width="300px" height="300" onclick="portfolio_img()">
+                        <h3>ポートフォリオサイト</h3>
+                    </div>
+                    <div class="work">
+                        <img src="image/kyanfesu.png" alt="" width="300px" height="300" onclick="camfes_img()">
+                        <h3>キャンパスフェスティバルサイト</h3>
+
+                    </div>
+                </tr>
+            </table>
+        </div>
+    </div>  
+    <div class="goals" id="goals">
+        <div>
+            <h1 class="pink">Goals</h1>
+            <div class="border_p"></div>
+        </div>
+        <div class="goal">
+            <div class="next">
+                <h2 class="g">Next</h2>
+                <div class="next_goal">
+                    <p class="ne">予約サイトの制作<br></p>
+                </div>
+            </div>
+            <div class="vision">
+                <h2 class="g">Vision</h2>
+                <div class="vision_goal">
+                    <p class="ne">頼ってもらえる人間になる</p>
+                </div>
+            </div>
+        </div>
+    </div>  
+</body>
+</html>
+<script>
+    var time = 0;
+    var count = 0;
+    var op0 = 1;
+    var op1 = 1;
+    var slideTimer = setInterval(slide,1000)
+    var opa0Timer = setInterval(opa0,10)
+    var opa1Timer = setInterval(opa1,10)
+    clearInterval(opa0Timer);
+    clearInterval(opa1Timer);
+    var img0 = document.getElementById('img0');
+    var img1 = document.getElementById('img1');
+
+    function before(){
+        document.getElementById('after').style.color = "gray";
+        document.getElementById('before').style.color = "#f58f8fff";
+        j.innerHTML = "Javascript　　★★☆☆☆";
+        h_j.innerHTML = "テトリス制作を途中で断念した";
+        h1_j.innerHTML = "　";
+        e.innerHTML = "English　　★☆☆☆☆";
+        h_e.innerHTML = "英検未取得";
+        h1_e.innerHTML = "なんとなくで英語を覚えていた";
+        h.innerHTML = "html　　★☆☆☆☆";
+        h_h.innerHTML = "基礎が欠如していて";
+        h1_h.innerHTML = "思ったように作ることができない";
+        c.innerHTML = "css　　★☆☆☆☆";
+        h_c.innerHTML = "要素を真ん中に揃えることもままならない";
+        h1_c.innerHTML = "　";
+    }
+
+    function after(){
+        h_j.innerHTML = "テトリス, 2048, オセロ制作";
+        h1_j.innerHTML = "　";
+        document.getElementById('after').style.color = "#f58f8fff";
+        document.getElementById('before').style.color = "gray";
+        j.innerHTML = "Javascript　　★★★☆☆";
+        e.innerHTML = "English　　★★★☆☆";
+        c.innerHTML = "css　　★★☆☆☆";
+        h.innerHTML = "html　　★★☆☆☆";
+        h_e.innerHTML = "英検3級, 準2級取得";
+        h1_e.innerHTML = "大学受験に向けて2級まで取ることに";
+        h_h.innerHTML = "ポートフォリオサイト制作";
+        h1_h.innerHTML = "基礎はできるようになってきた";
+        h_c.innerHTML = "綺麗に揃えることが出来ないこともあるが";
+        h1_c.innerHTML = "ある程度のことはできるようになった";
+    }
+
+    function de(){
+        document.getElementById('slide_tet').style.opacity = 0;
+        document.getElementById('slide_tet').style.zIndex = -1;
+        document.getElementById('slide_2048').style.opacity = 0;
+        document.getElementById('slide_2048').style.zIndex = -1;
+        document.getElementById('slide_osero').style.opacity = 0;
+        document.getElementById('slide_osero').style.zIndex = -1;
+        document.getElementById('slide_por').style.opacity = 0;
+        document.getElementById('slide_por').style.zIndex = -1;
+        document.getElementById('slide_cam').style.opacity = 0;
+        document.getElementById('slide_cam').style.zIndex = -1;
+        document.getElementById('back').style.opacity = 0;
+        document.getElementById('back').style.zIndex = -1;
+    }
+
+    function tetris_img(){
+        document.getElementById('slide_tet').style.opacity = 1;
+        document.getElementById('slide_tet').style.zIndex = 100;
+        document.getElementById('back').style.opacity = 0.8;
+        document.getElementById('back').style.zIndex = 90;
+    }
+
+    function nizero_img(){
+        document.getElementById('slide_2048').style.opacity = 1;
+        document.getElementById('slide_2048').style.zIndex = 100;
+        document.getElementById('back').style.opacity = 0.8;
+        document.getElementById('back').style.zIndex = 90;
+
+    }
+
+    function osero_img(){
+        document.getElementById('slide_osero').style.opacity = 1;
+        document.getElementById('slide_osero').style.zIndex = 100;
+        document.getElementById('back').style.opacity = 0.8;
+        document.getElementById('back').style.zIndex = 90;
+
+    }
+
+    function portfolio_img(){
+        document.getElementById('slide_por').style.opacity = 1;
+        document.getElementById('slide_por').style.zIndex = 100;
+        document.getElementById('back').style.opacity = 0.8;
+        document.getElementById('back').style.zIndex = 90;
+    }
+
+    function camfes_img(){
+        document.getElementById('slide_cam').style.opacity = 1;
+        document.getElementById('slide_cam').style.zIndex = 100;
+        document.getElementById('back').style.opacity = 0.8;
+        document.getElementById('back').style.zIndex = 90;
+
+    }
+
+
+    function slide(){
+        if(time % 8 == 0 && time !== 0){
+            if(count % 2 == 0){
+                img0.style.zIndex = 20;
+                img1.style.zIndex = 10;
+                img1.style.opacity = 1;
+                op0 = 1;
+                clearInterval(opa0Timer);
+                clearInterval(opa1Timer);
+                opa0Timer = setInterval(opa0,10);
+            }
+            else if(count % 2 == 1){
+                img0.style.zIndex = 10;
+                img1.style.zIndex = 20;
+                img0.style.opacity = 1;
+                op1 = 1;
+                clearInterval(opa1Timer);
+                clearInterval(opa0Timer);
+                opa1Timer = setInterval(opa1,10);
+            }
+            count += 1;
+        }
+        time += 1;
+    }
+    function opa0(){
+        if(op0 > 0){
+            op0 -= 0.01;
+            img0.style.opacity = op0;
+        }
+        else if(op0 <= 0){
+            clearInterval(opa1Timer);
+                clearInterval(opa0Timer);
+        }
+    }
+    function opa1(){
+        if(op1 > 0){
+            op1 -= 0.01;
+            img1.style.opacity = op1;
+        }
+        else if(op1 <= 0){
+            clearInterval(opa1Timer);
+                clearInterval(opa0Timer);
+        }
+
+    }
+    function left(){
+        time = 8;
+        slide();
+    }
+    function right(){
+        time = 8;
+        slide();
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+    @import url("https://fonts.googleapis.com/css?family=Poiret+One");
+    @font-face{
+        font-family: 'osya';
+        src: url("font/chogokubosogothic_5.ttf") format('truetype');
+    }
+    body{
+        margin: 0px;
+        background-color: white;
+        font-family: 'Poiret One', 'osya', 'Amatic SC';
+        width: 100%;
+    }
+    .header{
+        width: 99%;
+        font-size: 50px;
+        text-align: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        position: absolute;
+        color: #f58f8fff;
+        z-index: 1;
+        padding-left: 4px;
+    }
+    .header_ab{
+        width: 100%;
+        font-size: 50px;
+        text-align: center;
+        padding-top: 44px;
+        padding-bottom: 40px;
+        color: rgb(212, 212, 212);
+        z-index: 15;
+
+    }
+    table{
+        text-align: center;
+        border-spacing: 0px;
+    }
+    tr{
+        width: 100%;
+    }
+    td{
+        width: 500px;
+        margin: 0px;
+        background-color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: rgb(139, 139, 139);
+    }
+    td:hover{
+        background-color: white;
+        color: #f58f8fff;
+        cursor: pointer;
+    }
+    .left{
+        border-left: solid 1px white;
+    }
+    .slide{
+        margin-top: 40px;
+        margin-bottom: 50px;
+        position: relative;
+    }
+    .slide img{
+        position: absolute;
+        padding: 30px;
+        border: solid 1px  #f58f8fff;
+    }
+    .row{
+        display: flex;
+        margin-bottom: 80px;
+    }
+    .arrow{
+        margin-top: 150px;
+        margin-bottom: 130px;
+        margin-right: 19px;
+        margin-left: 19px;
+        z-index: 10;
+    }
+    .arrow:hover{
+        cursor: pointer;
+    }
+    .right_arrow:hover{
+        cursor: pointer;
+    }
+    .right_arrow{
+        margin-top: 150px;
+        margin-bottom: 130px;
+        margin-right: 19px;
+        margin-left: 19px;
+        z-index: 5;
+        right: 0px;
+        position: absolute;
+    }
+    .about{
+        width: 100%;
+        background-color:  #f58f8fff;
+        padding-bottom: 100px;
+        padding-top: 20px;
+        margin-top: 50px;
+    }
+
+    .s{
+        height: 800px;
+        width: 100%;
+        background-color:  white;
+    }
+    .works{
+        height: 2800px;
+        width: 100%;
+        background-color:  #f58f8fff;
+    }
+    .goals{
+        height: 500px;
+        width: 100%;
+        background-color:  white;
+    }    
+    .white{
+        padding-top: 50px;
+        text-align: center;
+        color: white;
+        font-size: 40px;
+    }
+    .pink{
+        padding-top: 50px;
+        text-align: center;
+        font-size: 40px;
+        color: #f58f8fff;
+    }
+    h1{
+        margin: 0;
+        padding-top: 100px;
+    }
+    .icon{
+        border-radius: 10px;
+        margin-top: 80px;
+        margin-bottom: 40px;
+    }
+    p{
+        color: white;
+        font-size: 20px;
+    }
+    .work img:hover{
+        opacity: 0.6;
+        cursor:pointer;
+    }
+    .slide img:hover{
+        cursor:pointer;
+    }
+    .img0{
+        opacity: 1;
+        height: 500px;
+        width: 1100px;
+    }
+    .img1{
+        opacity: 0;
+        height: 500px;
+        width: 1100px;
+    }
+    .border{
+        border-bottom: solid 1px white;
+        width: 100px;
+        margin-top: 20px;
+        margin: 20px auto 0 auto;
+    }
+    .border_p{
+        border-bottom: solid 1px #f58f8fff;
+        width: 100px;
+        margin-top: 20px;
+        margin: 20px auto 0 auto;
+    }
+    .work{
+        height: 300px;
+        width: 300px;
+        margin-left: 130px;
+        margin-bottom: 130px;
+        border: solid 4px white;
+        display: inline-block;
+        background-color: white;
+    }
+    h3{
+        color: white;
+        font-size: 17px;
+    }
+    .projectN{
+        padding: 100px 50px 80px 50px;
+        color: white;
+    }
+    .programing{
+        padding: 100px 50px 80px 50px;
+        color: white;
+    }
+    .skill-mar{
+        display: inline-block;
+        text-align: center;
+        margin-left: 210px;
+        margin-top: 100px;
+        border: solid 4px white;
+        height: 40px;
+        width: 400px;
+    }
+    .skill{
+        display: inline-block;
+        text-align: center;
+        margin-top: 100px;
+        margin-bottom: 150px;
+        border: solid 4px white;
+        height: 40px;
+        width: 400px;
+    }
+    .ja{
+        border-bottom: solid 1px #f58f8fff;
+        font-size: 20px;
+        color: rgb(143, 143, 143);
+        padding-bottom: 10px;
+    }
+    .skill_tab_before{
+        margin-top: 200px;
+        text-align: center;
+        display: inline;
+        margin-right: 150px;
+        margin-left: 150px;
+        color:  #f58f8fff;
+    }
+    .skill_tab_before:hover{
+        cursor: pointer;
+    }
+    .skill_tab_after{
+        margin-top: 200px;
+        text-align: center;
+        display: inline;
+        margin-right: 150px;
+        margin-left: 150px;
+        color: rgb(139, 139, 139);
+    }
+    .skill_tab_after:hover{
+        cursor: pointer;
+    }
+    .tab{
+        text-align: center;
+        margin-top: 20px;
+    }
+    .before{
+        color: #f58f8fff;
+    }
+    .goal{
+        margin-top: 100px;
+        display: flex;
+        text-align: center;
+    }
+    .vision{
+        margin-left: 10%;
+        margin-right: 10%;
+        height: 300px;
+        width: 35%;
+    }
+    .next{
+        margin-left: 10%;
+        height: 300px;
+        width: 35%;
+    }
+    .next_goal{
+        background-color: white;
+        width: 100%;
+        height: 300px;
+        border-radius: 20px;
+    }
+    .vision_goal{
+        width: 100%;
+        height: 300px;
+        background-color: white;
+        border-radius: 20px;
+    }
+    h2{
+        color: #f58f8fff;
+    }
+    .ne{
+        color: rgb(143, 143, 143);
+        padding: 10px 0 25% 0;
+        font-size: 25px;
+    }
+    .h{
+        color: rgb(143, 143, 143);
+        font-size: 18px;
+        margin: 0;
+    }
+    .h1{
+        margin: 0;
+        color: rgb(143, 143, 143);
+        font-size: 18px;
+    }
+    .g{
+        color: rgb(143, 143, 143);
+        border-bottom: solid 1px #f58f8fff;
+        padding: 10px;
+    }
+    .slide_tet{
+        position: absolute;
+        position: fixed;
+        margin: 9% 16%;
+        opacity: 0;
+        z-index: -10;
+    }
+    .back{
+        height: 100%;
+        width: 100%;
+        background-color: gainsboro;
+        opacity: 0;
+        z-index: -10;
+        position: fixed;
+    }
+</style>
