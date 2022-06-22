@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro-Works</title>
+</head>
+<body>
+    <img src="work_image/menu.png" alt="" class="menu_open" id="menu_open" onclick="menu()">
+    <img src="work_image/menu_close.png" alt="" class="menu_close" id="menu_close" onclick="close_menu()">
+    <div class="menu" id="menu_back"></div>
+    <div class="menu_works" id="menu_works">
+        <a class="a_menu" href="works.html"><h1 class="menu_works_title">works</h1></a>
+        <a class="a_menu" href="work7.html"><h3 class="menu_work">◯×ゲーム</h3></a>
+        <a class="a_menu" href="work6.html"><h3 class="menu_work">Puyo Clicker</h3></a>
+        <a class="a_menu" href="work5.html"><h3 class="menu_work"></h3></a>
+        <a class="a_menu" href="work4.html"><h3 class="menu_work"></h3></a>
+        <a class="a_menu" href="work3.html"><h3 class="menu_work">Portfolio</h3></a>
+        <a class="a_menu" href="work2.html"><h3 class="menu_work">2048</h3></a>
+        <a class="a_menu" href="work1.html"><h3 class="menu_work">Reversi</h3></a>
+        <a class="a_menu" href="work0.html"><h3 class="menu_work">Tetris</h3></a>
+    </div>
+    <header>
+        <div>
+            <h1 class="head">Programming Works</h1>
+        </div>
+    </header>
+    <h1 class="menu_head" id="menu_head">Programming Works</h1>
+    <div class="products">
+        <h2 class="p_title">Works</h2>
+        <table>
+            <tr>
+                <td>
+                    <a href="work7.html">
+                    <img src="work_image/maru.png" alt="">
+                    <p class="price">◯× Game</p>
+                    </a>
+                </td>
+                <td>
+                    <a href="work6.html">
+                    <img src="work_image/puyo.png" alt="">
+                    <p class="price">Puyo Clicker</p>
+                        </a>
+                </td>
+                <td>
+                    <a href="work1.html">
+                    <img src="work_image/rev_icon.png" alt="">
+                    <p class="price">Reversi</p>
+                    </a>
+                </td>
+                <td>
+                    <a href="work0.html">
+                    <img src="work_image/tet_icon.png" alt="">
+                    <p class="price">Tetris</p>
+                </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="work3.html">
+                        <img src="work_image/portfolio.png" alt="">
+                        <p class="price">Portfolio</p>    
+                    </a>
+                </td>
+                <td>
+                    <a href="work2.html">
+                    <img src="work_image/2048.png" alt="">
+                    <p class="price">2048</p>
+                    </a>
+                </td>
+                <td>
+                    <a href="w.html">
+                    <img src="work_image/" alt="">
+                    <p class="price">　</p>
+                    </a>
+                </td>
+                <td>
+                    <a href="pages/html">
+                    <img src="work_image/" alt="">
+                    <p class="price">　</p>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC:700 rel="stylesheet">
+</html>
+<script>
+    function menu(){
+        document.getElementById('menu_back').style.opacity = 0.85;
+        document.getElementById('menu_back').style.zIndex = 10000;
+        document.getElementById('menu_close').style.zIndex = 10001;
+        document.getElementById('menu_head').style.zIndex = 10002;
+        document.getElementById('menu_works').style.zIndex = 10002;
+    }
+    function close_menu(){
+        document.getElementById('menu_back').style.opacity = 0;
+        document.getElementById('menu_back').style.zIndex = -10;
+        document.getElementById('menu_close').style.zIndex = -1
+        document.getElementById('menu_head').style.zIndex = -1;
+        document.getElementById('menu_works').style.zIndex = -1;
+    }
+</script>
+<style>
+    .menu_works_title{
+        font-size: 18px;
+    }
+    .menu_works{
+        font-size: 12px;
+        z-index: -1;
+        color: white;
+        position: fixed;
+        margin-left: 50px;
+    }
+    .menu_work{
+        margin-left: 30px;        
+    }
+    header{
+        /* background-color: grey; */
+        margin: 0px;
+        width: 90%;
+        height: 80px;
+        padding: 0;
+        background-color: white;
+        position: fixed;
+        top: 0px;
+        z-index: 100;
+    }
+    .head{
+        margin: 0;
+        font-size: 22px;
+        height: 80px;
+        line-height: 80px;
+        padding-left: 44px;
+    }
+    .menu_head{
+        margin: 0;
+        font-size: 22px;
+        height: 80px;
+        line-height: 80px;
+        padding-left: 44px;
+        top: 0;
+        color: white;        
+        position: fixed;
+        position: flex;
+        opacity: 1;
+    }
+    .tab{
+        left: 44px;
+        margin: 0;
+        display: inline-block;
+        font-size: 22px;
+        height: 80px;
+        line-height: 80px;
+        padding-left: 44px;
+        background-color: white;
+    }
+    .tab:hover{
+        cursor:pointer;
+    }
+    body{
+        margin: 0;
+        width: 1360px;
+        margin-left: 40px;
+        margin-right: 40px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    table{
+        width: 100%;
+        text-align: center;
+    }
+    tr{
+        padding-bottom: 50px;
+    }
+    td{
+        width: 20%;
+    }
+    img{
+        width: 250px;
+        height: 250px;
+        z-index: 10;
+        border: solid 1px rgb(207, 207, 207);
+        
+    }
+    img:hover{
+        cursor: pointer;
+        opacity: 0.4;
+    }
+    .products{
+        width: 92%;
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-top: 100px;
+    }
+    .p_title{
+        font-size: 15px;
+        margin-bottom: 30px;
+        padding-left: 10px;
+    }
+    .price{
+        text-align: left;
+        font-size: 12px;
+        margin-left: 12px;
+        margin-bottom: 50px;
+    }
+    .menu{
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: -10;
+        opacity: 0;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+    }
+    .num{
+        text-align: center;
+    }
+    .page{
+        display: inline-block;
+        margin: 15px;
+    }
+    .menu_close{
+        position: fixed;
+        right: 90px;
+        top: 20px;
+        width: 65px;
+        height: 40px;
+        border: none;
+    }    
+    .menu_open{
+        position: fixed;
+        right: 95px;
+        top: 17px;
+        width: 55px;
+        height: 50px;
+        border: none;
+        z-index: 10000;
+    }
+    .menu_close:hover{
+        cursor: pointer;
+        opacity: 1;
+    }
+    .menu_open:hover{
+        cursor: pointer;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    .a_menu{
+        text-decoration: none;
+        color: white;
+    }
+    .a_menu:hover{
+        color: gainsboro;
+    }
+</style>
