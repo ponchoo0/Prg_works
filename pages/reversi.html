@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>オセロ</title>
+  </head>
+  <body> 
+    <div class="turn" id="result" align="center">黒の番</div>   
+    <table align="center">
+      <tr>
+        <td id="0" onclick="game(0)"></td>
+        <td id="1" onclick="game(1)"></td>
+        <td id="2" onclick="game(2)"></td>
+        <td id="3" onclick="game(3)"></td>
+        <td id="4" onclick="game(4)"></td>
+        <td id="5" onclick="game(5)"></td>
+        <td id="6" onclick="game(6)"></td>
+        <td id="7" onclick="game(7)"></td>
+      </tr>
+
+      <tr>
+        <td id="8" onclick="game(8)"></td>
+        <td id="9" onclick="game(9)"></td>
+        <td id="10" onclick="game(10)"></td>
+        <td id="11" onclick="game(11)"></td>
+        <td id="12" onclick="game(12)"></td>
+        <td id="13" onclick="game(13)"></td>
+        <td id="14" onclick="game(14)"></td>
+        <td id="15" onclick="game(15)"></td>
+      </tr>
+
+      <tr>
+        <td id="16" onclick="game(16)"></td>
+        <td id="17" onclick="game(17)"></td>
+        <td id="18" onclick="game(18)"></td>
+        <td id="19" onclick="game(19)"></td>
+        <td id="20" onclick="game(20)"></td>
+        <td id="21" onclick="game(21)"></td>
+        <td id="22" onclick="game(22)"></td>
+        <td id="23" onclick="game(23)"></td>
+
+      </tr>
+
+      <tr>
+        <td id="24" onclick="game(24)"></td>
+        <td id="25" onclick="game(25)"></td>
+        <td id="26" onclick="game(26)"></td>
+        <td id="27" onclick="game(27)"></td>
+        <td id="28" onclick="game(28)"></td>
+        <td id="29" onclick="game(29)"></td>
+        <td id="30" onclick="game(30)"></td>
+        <td id="31" onclick="game(31)"></td>
+
+      </tr>
+
+      <tr>
+        <td id="32" onclick="game(32)"></td>
+        <td id="33" onclick="game(33)"></td>
+        <td id="34" onclick="game(34)"></td>
+        <td id="35" onclick="game(35)"></td>
+        <td id="36" onclick="game(36)"></td>
+        <td id="37" onclick="game(37)"></td>
+        <td id="38" onclick="game(38)"></td>
+        <td id="39" onclick="game(39)"></td>
+
+      </tr>
+
+      <tr>
+        <td id="40" onclick="game(40)"></td>
+        <td id="41" onclick="game(41)"></td>
+        <td id="42" onclick="game(42)"></td>
+        <td id="43" onclick="game(43)"></td>
+        <td id="44" onclick="game(44)"></td>
+        <td id="45" onclick="game(45)"></td>
+        <td id="46" onclick="game(46)"></td>
+        <td id="47" onclick="game(47)"></td>
+      </tr>
+
+      <tr>
+        <td id="48" onclick="game(48)"></td>
+        <td id="49" onclick="game(49)"></td>
+        <td id="50" onclick="game(50)"></td>
+        <td id="51" onclick="game(51)"></td>
+        <td id="52" onclick="game(52)"></td>
+        <td id="53" onclick="game(53)"></td>
+        <td id="54" onclick="game(54)"></td>
+        <td id="55" onclick="game(55)"></td>
+
+      </tr>
+
+      <tr>
+        <td id="56" onclick="game(56)"></td>
+        <td id="57" onclick="game(57)"></td>
+        <td id="58" onclick="game(58)"></td>
+        <td id="59" onclick="game(59)"></td>
+        <td id="60" onclick="game(60)"></td>
+        <td id="61" onclick="game(61)"></td>
+        <td id="62" onclick="game(62)"></td>
+        <td id="63" onclick="game(63)"></td>
+      
+      </tr>
+    </table>
+      <table class="scores" align="center">
+        <tr>
+          <th class="score">黒</th>
+          <th class="score">白</th>
+        </tr>
+        <tr>
+          <th class="score" id ="black">2</th>
+          <th class="score" id ="white">2</th>
+        </tr>
+        </table>
+          <button class=""re type="button" onclick="reload()">リスタート</button>   
+          <button class=""re type="button" onclick="skip()">スキップ</button>     
+      </body>
+</html>
+<script>
+  var base = 
+[[0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,1,2,0,0,0],[0,0,0,2,1,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]]
+
+  document.getElementById(27).style.background = 'white';
+  document.getElementById(28).style.background = 'black';
+  document.getElementById(35).style.background = 'black';
+  document.getElementById(36).style.background = 'white';
+  var l = 0;
+  var color = 0;
+  var reWhite = 0;
+  var reBlack = 0;
+  var b = 0;
+  var wr = 0;
+  var wl = 0;
+  var wu = 0;
+  var rr = 0;
+  var ll = 0;
+  var uu = 0;
+  var dd = 0;
+  var uur = 0;
+  var uul = 0;
+  var ddr = 0;
+  var ddl = 0;
+  result.innerHTML="●　黒の番";
+
+  function skip(){
+    if(color == 1){
+      color = 0;
+      result.innerHTML="●　黒の番";
+    }
+    else if(color == 0){
+      color = 1;
+      result.innerHTML="◯　白の番";
+    }
+  }
+  
+  function reload(){
+    location.reload();
+  }
+
+  function game(input){
+    var bn = (input); 
+    var tate = Math.floor(bn / 8);
+    var yoko = Math.floor(bn % 8);
+
+    if(color == 1 && base[tate][yoko] == 0){
+      var BCount = 0;
+      var WCount = 0;
+      var NCount = 0;
+      if(yoko < 6){
+        for(var r = 1;r < 8;r++){
+          if(base[tate][yoko + r] == 0 || base[tate][yoko + 1] == 1){
+            break;
+          }
+          if(base[tate][yoko + r] == 1 && r >= 2){
+            rr = r;
+            while(rr >= 0){
+              base[tate][yoko + rr] = 1
+              document.getElementById((tate * 8) + yoko + rr).style.background ='white';
+              rr -= 1;
+            }
+            color = 0;
+            break;
+          }
+        }  
+      }
+      if(yoko > 1){    
+        for(var l = 1;l < 8;l++){
+          if(base[tate][yoko - l] == 0 || base[tate][yoko - 1] == 1){
+            break;
+          }
+          if(base[tate][yoko - l] == 1 && l >= 2){
+            ll = l;
+            while(ll >= 0){
+              base[tate][yoko - ll] = 1
+              document.getElementById((tate * 8) + yoko - ll).style.background ='white';
+              ll -= 1;
+            }
+            color = 0;
+            break;
+          }
+        }
+      }
+      if(tate > 1){
+        for(var u = 1;u < 8;u++){
+          if(base[tate - u][yoko] == 0 || base[tate - 1][yoko] == 1){
+            break;
+          }
+          if(base[tate - u][yoko] == 1 && u >= 2){
+            uu = u;
+            while(uu >= 0){
+              base[tate - uu][yoko] = 1
+              document.getElementById((tate - uu) * 8 + yoko).style.background ='white';
+              uu -= 1;
+            }
+            color = 0;
+            break;
+          }
+        }
+      }
+      if(tate < 6){
+        for(var d = 1;d < 8;d++){
+          if(base[tate + d][yoko] == 0 || base[tate + 1][yoko] == 1){
+            break;
+          }
+          if(base[tate + d][yoko] == 1 && d >= 2){
+            dd = d;
+            while(dd >= 0){
+              base[tate + dd][yoko] = 1
+              document.getElementById((tate + dd) * 8 + yoko).style.background ='white';
+              dd -= 1;
+            }
+            color = 0;
+            break;
+          }
+        }
+      }
+      if(tate > 1 && yoko < 6){
+        for(var ur = 1;ur < 8;ur++){
+          if(base[tate - ur][yoko + ur] == 0 || base[tate - 1][yoko + 1] == 1){
+            break;
+          }
+          if(base[tate - ur][yoko + ur] == 1 && ur >= 2){
+            uur = ur;
+            while(uur >= 0){
+              base[tate - uur][yoko + uur] = 1
+              document.getElementById((tate - uur) * 8 + (yoko + uur)).style.background ='white';
+              uur -= 1;
+            }
+            color = 0;
+            break;
+          }
+        }
+      }
+      if(tate > 1 && yoko > 1){
+        for(var ul = 1;ul < 8;ul++){
+          if(base[tate - ul][yoko - ul] == 0 || base[tate - 1][yoko - 1] == 1){
+            break;
+          }
+          if(base[tate - ul][yoko - ul] == 1 && ul >= 2){
+            uul = ul;
+            while(uul >= 0){
+              base[tate - uul][yoko - uul] = 1
+              document.getElementById((tate - uul) * 8 + (yoko - uul)).style.background ='white';
+              uul -= 1;
+            }
+            color = 0;
+            break;
+          }
+        }
+      }
+      if(tate < 6 && yoko < 6){
+        for(var dr = 1;dr < 8;dr++){
+          if(base[tate + 1][yoko + 1] == 1){
+            break;
+          }
+          if(base[tate + dr][yoko + dr] == 0){
+            break;
+          }
+          if(base[tate + dr][yoko + dr] == 1 && dr >= 2){
+            ddr = dr;
+            while(ddr >= 0){
+              base[tate + ddr][yoko + ddr] = 1
+              document.getElementById((tate + ddr) * 8 + (yoko + ddr)).style.background ='white';
+              ddr -= 1;
+            }
+            color = 0;
+            break;
+          }
+        }
+      }
+      
+      if(tate < 6 && yoko > 1){
+        for(var dl = 1;dl < 8;dl++){
+          if(base[tate + dl][yoko - dl] == 0 || base[tate + 1][yoko - 1] == 1){
+            break;
+          }
+          if(base[tate + dl][yoko - dl] == 1 && dl >= 2){
+            ddl = dl;
+            while(ddl >= 0){
+              base[tate + ddl][yoko - ddl] = 1
+              document.getElementById((tate + ddl) * 8 + (yoko - ddl)).style.background ='white';
+              ddl -= 1;
+            }
+            color = 0;
+            break;
+          }
+        }
+      }
+
+    for(var i = 0;i < 8;i++){
+      if(base[0][i] == 2){
+        BCount += 1;
+      }
+      if(base[1][i] == 2){
+        BCount += 1;
+      }
+      if(base[2][i] == 2){
+        BCount += 1;
+      }
+      if(base[3][i] == 2){
+        BCount += 1;
+      }
+      if(base[4][i] == 2){
+        BCount += 1;
+      }
+      if(base[5][i] == 2){
+        BCount += 1;
+      }
+      if(base[6][i] == 2){
+        BCount += 1;
+      }
+      if(base[7][i] == 2){
+        BCount += 1;
+      }
+      if(base[0][i] == 1){
+        WCount += 1;
+      }
+      if(base[1][i] == 1){
+        WCount += 1;
+      }
+      if(base[2][i] == 1){
+        WCount += 1;
+      }
+      if(base[3][i] == 1){
+        WCount += 1;
+      }
+      if(base[4][i] == 1){
+        WCount += 1;
+      }
+      if(base[5][i] == 1){
+        WCount += 1;
+      }
+      if(base[6][i] == 1){
+        WCount += 1;
+      }
+      if(base[7][i] == 1){
+        WCount += 1;
+      }
+      if(base[0][i] == 0){
+        NCount += 1;
+      }
+      if(base[1][i] == 0){
+        NCount += 1;
+      }
+      if(base[2][i] == 0){
+        NCount += 1;
+      }
+      if(base[3][i] == 0){
+        NCount += 1;
+      }
+      if(base[4][i] == 0){
+        NCount += 1;
+      }
+      if(base[5][i] == 0){
+        NCount += 1;
+      }
+      if(base[6][i] == 0){
+        NCount += 1;
+      }
+      if(base[7][i] == 0){
+        NCount += 1;
+      }
+    }
+    white.innerHTML = WCount;
+    black.innerHTML = BCount;
+    if(color == 0){
+      result.innerHTML="●　黒の番";
+    }
+    if(color == 1){
+      result.innerHTML="◯　白の番";
+    }
+    if(WCount == 0){
+      result.innerHTML="黒の勝ち！";
+    }
+    if(WCount == 0){
+      result.innerHTML="黒の勝ち！";
+    }
+    if(WCount == 0){
+      result.innerHTML="黒の勝ち！";
+    }
+    if(BCount == 0){
+      result.innerHTML="白の勝ち！";
+    }
+    if(NCount == 0){
+      if(WCount > BCount){
+        result.innerHTML="白の勝ち！";
+      }
+      if(BCount > WCount){
+        result.innerHTML="黒の勝ち！";
+      }
+    }
+
+    }
+
+    if(color == 0 && base[tate][yoko] == 0){
+      var BCount = 0;
+      var WCount = 0;
+      var NCount = 0;
+      if(yoko < 6){
+        for(var r = 1;r < 8;r++){
+          if(base[tate][yoko + r] == 0 || base[tate][yoko + 1] == 2){
+            break;
+          }
+          if(base[tate][yoko + r] == 2 && r >= 2){
+            rr = r;
+            while(rr >= 0){
+              base[tate][yoko + rr] = 2
+              document.getElementById((tate * 8) + yoko + rr).style.background ='black';
+              rr -= 1;
+            }
+            color = 1;
+            break;
+          }
+        } 
+      }
+      if(yoko > 1){
+        for(var l = 1;l < 8;l++){
+          if(base[tate][yoko - l] == 0 || base[tate][yoko - 1] == 2){
+            break;
+          }
+          if(base[tate][yoko - l] == 2 && l >= 2){
+            ll = l;
+            while(ll >= 0){
+              base[tate][yoko - ll] = 2
+              document.getElementById((tate * 8) + yoko - ll).style.background ='black';
+              ll -= 1;
+            }
+            color = 1;
+            break;
+          }
+        }
+      }
+      if(tate > 1){
+        for(var u = 1;u < 8;u++){
+          if(base[tate - u][yoko] == 0 || base[tate - 1][yoko] == 2){
+            break;
+          }
+          if(base[tate - u][yoko] == 2 && u >= 2){
+            uu = u;
+            while(uu >= 0){
+              base[tate - uu][yoko] = 2
+              document.getElementById((tate - uu) * 8 + yoko).style.background ='black';
+              uu -= 1;
+            }
+            color = 1;
+            break;
+          }
+        }
+      }
+      if(tate < 6){
+        for(var d = 1;d < 8;d++){
+          if(base[tate + d][yoko] == 0 || base[tate + 1][yoko] == 2){
+            break;
+          }
+          if(base[tate + d][yoko] == 2 && d >= 2){
+            dd = d;
+            while(dd >= 0){
+              base[tate + dd][yoko] = 2
+              document.getElementById((tate + dd) * 8 + yoko).style.background ='black';
+              dd -= 1;
+            }
+            color = 1;
+            break;
+          }
+        }
+      }
+      if(tate > 1 && yoko < 6){
+        for(var ur = 1;ur < 8;ur++){
+          if(base[tate - ur][yoko + ur] == 0 || base[tate - 1][yoko + 1] == 2){
+            break;
+          }
+          if(base[tate - ur][yoko + ur] == 2 && ur >= 2){
+            uur = ur;
+            while(uur >= 0){
+              base[tate - uur][yoko + uur] = 2
+              document.getElementById((tate - uur) * 8 + (yoko + uur)).style.background ='black';
+              uur -= 1;
+            }
+            color = 1;
+            break;
+          }
+        }
+      }
+      if(tate > 1 && yoko > 1){
+        for(var ul = 1;ul < 8;ul++){
+          if(base[tate - ul][yoko - ul] == 0 || base[tate - 1][yoko - 1] == 2){
+            break;
+          }
+          if(base[tate - ul][yoko - ul] == 2 && ul >= 2){
+            uul = ul;
+            while(uul >= 0){
+              base[tate - uul][yoko - uul] = 2
+              document.getElementById((tate - uul) * 8 + (yoko - uul)).style.background ='black';
+              uul -= 1;
+            }
+            color = 1;
+            break;
+          }
+        }
+      }
+      if(tate < 6 && yoko < 6){
+        for(var dr = 1;dr < 8;dr++){
+          if(base[tate + dr][yoko + dr] == 0 || base[tate + 1][yoko + 1] == 2){
+            break;
+          }
+          if(base[tate + dr][yoko + dr] == 2 && dr >= 2){
+            ddr = dr;
+            while(ddr >= 0){
+              base[tate + ddr][yoko + ddr] = 2
+              document.getElementById((tate + ddr) * 8 + (yoko + ddr)).style.background ='black';
+              ddr -= 1;
+            }
+            color = 1;
+            break;
+          }
+        }
+      }
+      if(tate < 6 && yoko > 1){
+        for(var dl = 1;dl < 8;dl++){
+          if(base[tate + dl][yoko - dl] == 0 || base[tate + 1][yoko - 1] == 2){
+            break;
+          }
+          if(base[tate + dl][yoko - dl] == 2 && dl >= 2){
+            ddl = dl;
+            while(ddl >= 0){
+              base[tate + ddl][yoko - ddl] = 2
+              document.getElementById((tate + ddl) * 8 + (yoko - ddl)).style.background ='black';
+              ddl -= 1;
+            }
+            color = 1;
+            break;
+          }
+        }
+      }    
+      for(var i = 0;i < 8;i++){
+      if(base[0][i] == 2){
+        BCount += 1;
+      }
+      if(base[1][i] == 2){
+        BCount += 1;
+      }
+      if(base[2][i] == 2){
+        BCount += 1;
+      }
+      if(base[3][i] == 2){
+        BCount += 1;
+      }
+      if(base[4][i] == 2){
+        BCount += 1;
+      }
+      if(base[5][i] == 2){
+        BCount += 1;
+      }
+      if(base[6][i] == 2){
+        BCount += 1;
+      }
+      if(base[7][i] == 2){
+        BCount += 1;
+      }
+      if(base[0][i] == 1){
+        WCount += 1;
+      }
+      if(base[1][i] == 1){
+        WCount += 1;
+      }
+      if(base[2][i] == 1){
+        WCount += 1;
+      }
+      if(base[3][i] == 1){
+        WCount += 1;
+      }
+      if(base[4][i] == 1){
+        WCount += 1;
+      }
+      if(base[5][i] == 1){
+        WCount += 1;
+      }
+      if(base[6][i] == 1){
+        WCount += 1;
+      }
+      if(base[7][i] == 1){
+        WCount += 1;
+      }
+      if(base[0][i] == 0){
+        NCount += 1;
+      }
+      if(base[1][i] == 0){
+        NCount += 1;
+      }
+      if(base[2][i] == 0){
+        NCount += 1;
+      }
+      if(base[3][i] == 0){
+        NCount += 1;
+      }
+      if(base[4][i] == 0){
+        NCount += 1;
+      }
+      if(base[5][i] == 0){
+        NCount += 1;
+      }
+      if(base[6][i] == 0){
+        NCount += 1;
+      }
+      if(base[7][i] == 0){
+        NCount += 1;
+      }
+    }
+    white.innerHTML = WCount;
+    black.innerHTML = BCount;
+    if(color == 0){
+      result.innerHTML="●　黒の番";
+    }
+    if(color == 1){
+      result.innerHTML="◯　白の番";
+    }
+    if(WCount == 0){
+      result.innerHTML="黒の勝ち！";
+    }
+    if(WCount == 0){
+      result.innerHTML="黒の勝ち！";
+    }
+    if(WCount == 0){
+      result.innerHTML="黒の勝ち！";
+    }
+    if(BCount == 0){
+      result.innerHTML="白の勝ち！";
+    }
+    if(NCount == 0){
+      if(WCount > BCount){
+        result.innerHTML="白の勝ち！";
+      }
+      if(BCount > WCount){
+        result.innerHTML="黒の勝ち！";
+      }
+    }
+
+    }
+
+  }
+</script>
+<style>
+  table{
+    background-color: white;
+    
+  }
+td{
+  background-color: rgb(190, 243, 110);
+  border: solid 1px;
+  border-color: black;
+  height: 50px;
+  width: 50px;
+  margin: 0;
+  font-size: 30px;
+}
+body{
+  background-color: whitesmoke;
+  text-align: center;
+}
+.Button{
+  border-radius: 10px;
+  
+}
+.circle{
+  border: solid 1px;
+  border-color: black;
+  height: 100px;
+  width: 100px;
+  display: flex;
+}
+.count{
+  display: flex;
+}
+.score {
+  text-align: center;
+  border: solid 1px;
+
+}
+th{
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  height: 50px;
+  width: 218px;
+  font-size: 25px;
+}
+.turn{
+  border: solid 1px black;
+  background-color: white;
+  height: 50px;
+  width: 444px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 35px;
+}
+button{
+  width: 220px;
+  height: 50px;
+  background-color: white;
+  margin-bottom: 2px;
+  border: black solid 1px;
+}
+.scores{
+  width: 450px;
+}
+.re{
+  width: 250px;
+}
+</style>

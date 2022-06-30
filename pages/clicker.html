@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>ぷよクリッカー</title>
+  </head>
+<body>
+  <h1 class="title">ぷよクリッカー</h1>
+  <button type="submit" class="character" onclick="character()"><img src="image/puyo.png"></button>
+  <br>
+  <div class="Money" id="Money"></div>
+  <div class="ms" id="ms"></div>
+  <div class="tap" id="tap"></div>
+  <hr>
+  <div>タップ時のお金増加</div>
+  <button id="ueno" type="submit" onclick="Click()" class="Click"></button>
+  <hr>
+  <div>income 1lv</div>
+  <button id="limit" type="submit" onclick="income()" class="income"></button>
+  <div>income 2lv</div>
+  <button id="limit2" type="submit" onclick="income2()" class="income"></button>
+  <div>income 3lv</div>
+  <button id="limit3" type="submit" onclick="income3()" class="income"></button>
+  <div>income 4lv</div>
+  <button id="limit4" type="submit" onclick="income4()" class="income"></button>
+  <div>income 5lv</div>
+  <button id="limit5" type="submit" onclick="income5()" class="income"></button>
+
+  <br>
+
+  </body>
+</html>
+<script>
+  var a = 100;
+var b = 100;
+var money = 0;
+var time1 = 10;
+var id = setInterval(Draw,time1);
+var id = setInterval(Auto,1000);
+var count = 1;
+var count1 = 1;
+var count2 = 1;
+var count3 = 1;
+var count4 = 1;
+var n = 1;
+var a = 0;
+var b = 0;
+var c = 0;
+var d = 0;
+var e = 0;
+
+function Draw(){
+    Money.innerText = "money : "+(Math.floor(money * 10)/10);
+    ms.innerText = (Math.floor(a*10)/10)+"/s";
+    tap.innerText =　Math.pow(10,count1-1)+"/tap";
+    a = b + c + d + e; 
+
+// 1lv
+        if(money - 10 * count < 0){
+        limit.innerText = "cost:"+(count * 10)+"　　　　　"+(count-1)+"lv    不可能"; 
+        }
+        else if(money - 10 * count >= 0 && count < 31){
+        limit.innerText = "cost:"+(count * 10)+"　　　　　"+(count-1)+"lv    可能"; 
+        }
+        else{
+        limit.innerText = "max";
+        }
+// 2lv
+    if(money - 20 * count2 < 0){
+        limit2.innerText = "cost:"+(count2 * 20)+"　　　　　"+(count2-1)+"lv    不可能"; 
+        }
+        else if(money - 20 * count2 >= 0 && count2 < 31){
+        limit2.innerText = "cost:"+(count2 * 20)+"　　　　　"+(count2-1)+"lv    可能"; 
+        }
+        else{
+        limit2.innerText = "max";
+        }
+// 3lv
+    if(money - 50 * count3 < 0){
+        limit3.innerText = "cost:"+(count3 * 50)+"　　　　　"+(count3-1)+"lv    不可能"; 
+        }
+        else if(money - 50 * count3 >= 0 && count3 < 31){
+        limit3.innerText = "cost:"+(count3 * 50)+"　　　　　"+(count3-1)+"lv    可能"; 
+        }
+        else{
+        limit3.innerText = "max";
+        }
+// 4lv
+    if(money - 100 * count4 < 0){
+       limit4.innerText = "cost:"+(count4 * 100)+"　　　　　"+(count4-1)+"lv    不可能"; 
+       }
+       else if(money - 100 * count4 >= 0 && count4 < 31){
+       limit4.innerText = "cost:"+(count4 * 100)+"　　　　　"+(count4-1)+"lv    可能"; 
+       }
+       else{
+       limit4.innerText = "max";
+       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+    if(money - Math.pow(100,count1) >= 0){
+        ueno.innerText = "cost:"+(Math.pow(100,count1))+"　　　　　"+(count1-1)+"lv    可能"; 
+        }
+        else{
+            ueno.innerText = "cost:"+(Math.pow(100,count1))+"　　　　　"+(count1-1)+"lv    不可能"; 
+        }
+}
+//クリック時増加ボタン
+
+
+function character(){
+    money += n;
+}
+function Auto(){
+    money += a;
+}
+
+function Click(){
+    if(money - Math.pow(100,count1)>=0){
+    money -= Math.pow(100,count1);
+    n = Math.pow(10,count1);
+count1 += 1;
+    }
+}
+function income(){
+if(money - 10 * count >= 0 && count <= 30 ){
+    money -= 10 * count;
+    b = count;
+    count += 1;
+}
+}
+function income2(){
+if(money - 20 * count2 >=0 && count2 <= 30){
+    money -= 20 * count2;
+    c = count2 * 2;
+    count2 += 1;
+}
+}
+function income3(){
+    if(money - 50 * count3 >=0 && count3 <= 30){
+        money -= 50 * count3;
+        d = count3 * 5;
+        count3 += 1;
+    }
+    }
+function income4(){
+    if(money - 100 * count4 >=0 && count4 <= 30){
+        money -= 100 * count4;
+        e = count4 * 10;
+        count4 += 1;
+    }
+    }
+</script>
+<style>
+  body{
+    text-align: center;
+    min-width: 20%;
+  
+
+}
+.Money{
+    min-width: 30%;
+    font-size: 20px;
+    padding-top: 20px;
+}
+.income,.Click{
+    height: 100px;
+    width: 50%;
+}
+</style>
