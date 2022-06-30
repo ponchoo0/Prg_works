@@ -1,0 +1,3849 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+</head>
+
+<body onload="random()">
+    <p id="title" class="title">Tetris</p>
+    <div class="information">
+        <p>→：　右
+        <br>←：　左
+        <br>↑,x：　右回転
+        <br>z：　左回転
+        <br>↓：　ソフトドロップ
+        <br>Space：　ハードドロップ
+        <br>Shift：　ホールド</p>
+    </div>
+    <div class="game">
+        <div class="holds">
+        <table id="hold1" align="center" class="hold1">
+            <tr class="hold">
+                <tr>
+                    <p class="hold_text">HOLD</p>
+                </tr>
+                <tr>
+                    <td id="q0"></td>
+                    <td id="q1"></td>
+                    <td id="q2"></td>
+                    <td id="q3"></td>
+                </tr>
+                <tr>
+                    <td id="q4"></td>
+                    <td id="q5"></td>
+                    <td id="q6"></td>
+                    <td id="q7"></td>
+                </tr>
+                <tr>
+                    <td id="q8"></td>
+                    <td id="q9"></td>
+                    <td id="q10"></td>
+                    <td id="q11"></td>
+                </tr>
+                <tr>
+                    <td id="q12"></td>
+                    <td id="q13"></td>
+                    <td id="q14"></td>
+                    <td id="q15"></td>
+                </tr>    
+            </tr>
+        </table>
+    </div>
+        <div class="nexts">
+            <table class="display">
+                <tr>
+                    <td id="0"></td>
+                    <td id="1"></td>
+                    <td id="2"></td>
+                    <td id="3"></td>
+                    <td id="4"></td>
+                    <td id="5"></td>
+                    <td id="6"></td>
+                    <td id="7"></td>
+                    <td id="8"></td>
+                    <td id="9"></td>
+                </tr>
+                <tr>
+                    <td id="10"></td>
+                    <td id="11"></td>
+                    <td id="12"></td>
+                    <td id="13"></td>
+                    <td id="14"></td>
+                    <td id="15"></td>
+                    <td id="16"></td>
+                    <td id="17"></td>
+                    <td id="18"></td>
+                    <td id="19"></td>
+                </tr>
+                <tr>
+                    <td id="20"></td>
+                    <td id="21"></td>
+                    <td id="22"></td>
+                    <td id="23"></td>
+                    <td id="24"></td>
+                    <td id="25"></td>
+                    <td id="26"></td>
+                    <td id="27"></td>
+                    <td id="28"></td>
+                    <td id="29"></td>
+                </tr>
+                <tr>
+                    <td id="30"></td>
+                    <td id="31"></td>
+                    <td id="32"></td>
+                    <td id="33"></td>
+                    <td id="34"></td>
+                    <td id="35"></td>
+                    <td id="36"></td>
+                    <td id="37"></td>
+                    <td id="38"></td>
+                    <td id="39"></td>
+                </tr>
+                <tr>
+                    <td id="40"></td>
+                    <td id="41"></td>
+                    <td id="42"></td>
+                    <td id="43"></td>
+                    <td id="44"></td>
+                    <td id="45"></td>
+                    <td id="46"></td>
+                    <td id="47"></td>
+                    <td id="48"></td>
+                    <td id="49"></td>
+                </tr>
+                <tr>
+                    <td id="50"></td>
+                    <td id="51"></td>
+                    <td id="52"></td>
+                    <td id="53"></td>
+                    <td id="54"></td>
+                    <td id="55"></td>
+                    <td id="56"></td>
+                    <td id="57"></td>
+                    <td id="58"></td>
+                    <td id="59"></td>
+                </tr>
+                <tr>
+                    <td id="60"></td>
+                    <td id="61"></td>
+                    <td id="62"></td>
+                    <td id="63"></td>
+                    <td id="64"></td>
+                    <td id="65"></td>
+                    <td id="66"></td>
+                    <td id="67"></td>
+                    <td id="68"></td>
+                    <td id="69"></td>
+                </tr>
+                <tr>
+                    <td id="70"></td>
+                    <td id="71"></td>
+                    <td id="72"></td>
+                    <td id="73"></td>
+                    <td id="74"></td>
+                    <td id="75"></td>
+                    <td id="76"></td>
+                    <td id="77"></td>
+                    <td id="78"></td>
+                    <td id="79"></td>
+                </tr>
+                <tr>
+                    <td id="80"></td>
+                    <td id="81"></td>
+                    <td id="82"></td>
+                    <td id="83"></td>
+                    <td id="84"></td>
+                    <td id="85"></td>
+                    <td id="86"></td>
+                    <td id="87"></td>
+                    <td id="88"></td>
+                    <td id="89"></td>
+                </tr>
+                <tr>
+                    <td id="90"></td>
+                    <td id="91"></td>
+                    <td id="92"></td>
+                    <td id="93"></td>
+                    <td id="94"></td>
+                    <td id="95"></td>
+                    <td id="96"></td>
+                    <td id="97"></td>
+                    <td id="98"></td>
+                    <td id="99"></td>
+                </tr>
+                <tr>
+                    <td id="100"></td>
+                    <td id="101"></td>
+                    <td id="102"></td>
+                    <td id="103"></td>
+                    <td id="104"></td>
+                    <td id="105"></td>
+                    <td id="106"></td>
+                    <td id="107"></td>
+                    <td id="108"></td>
+                    <td id="109"></td>
+                </tr>
+                <tr>
+                    <td id="110"></td>
+                    <td id="111"></td>
+                    <td id="112"></td>
+                    <td id="113"></td>
+                    <td id="114"></td>
+                    <td id="115"></td>
+                    <td id="116"></td>
+                    <td id="117"></td>
+                    <td id="118"></td>
+                    <td id="119"></td>
+                </tr>
+                <tr>
+                    <td id="120"></td>
+                    <td id="121"></td>
+                    <td id="122"></td>
+                    <td id="123"></td>
+                    <td id="124"></td>
+                    <td id="125"></td>
+                    <td id="126"></td>
+                    <td id="127"></td>
+                    <td id="128"></td>
+                    <td id="129"></td>
+                </tr>
+                <tr>
+                    <td id="130"></td>
+                    <td id="131"></td>
+                    <td id="132"></td>
+                    <td id="133"></td>
+                    <td id="134"></td>
+                    <td id="135"></td>
+                    <td id="136"></td>
+                    <td id="137"></td>
+                    <td id="138"></td>
+                    <td id="139"></td>
+                </tr>
+                <tr>
+                    <td id="140"></td>
+                    <td id="141"></td>
+                    <td id="142"></td>
+                    <td id="143"></td>
+                    <td id="144"></td>
+                    <td id="145"></td>
+                    <td id="146"></td>
+                    <td id="147"></td>
+                    <td id="148"></td>
+                    <td id="149"></td>
+                </tr>
+                <tr>
+                    <td id="150"></td>
+                    <td id="151"></td>
+                    <td id="152"></td>
+                    <td id="153"></td>
+                    <td id="154"></td>
+                    <td id="155"></td>
+                    <td id="156"></td>
+                    <td id="157"></td>
+                    <td id="158"></td>
+                    <td id="159"></td>
+                </tr>
+                <tr>
+                    <td id="160"></td>
+                    <td id="161"></td>
+                    <td id="162"></td>
+                    <td id="163"></td>
+                    <td id="164"></td>
+                    <td id="165"></td>
+                    <td id="166"></td>
+                    <td id="167"></td>
+                    <td id="168"></td>
+                    <td id="169"></td>
+                </tr>
+                <tr>
+                    <td id="170"></td>
+                    <td id="171"></td>
+                    <td id="172"></td>
+                    <td id="173"></td>
+                    <td id="174"></td>
+                    <td id="175"></td>
+                    <td id="176"></td>
+                    <td id="177"></td>
+                    <td id="178"></td>
+                    <td id="179"></td>
+                </tr>
+                <tr>
+                    <td id="180"></td>
+                    <td id="181"></td>
+                    <td id="182"></td>
+                    <td id="183"></td>
+                    <td id="184"></td>
+                    <td id="185"></td>
+                    <td id="186"></td>
+                    <td id="187"></td>
+                    <td id="188"></td>
+                    <td id="189"></td>
+                </tr>
+                <tr>
+                    <td id="190"></td>
+                    <td id="191"></td>
+                    <td id="192"></td>
+                    <td id="193"></td>
+                    <td id="194"></td>
+                    <td id="195"></td>
+                    <td id="196"></td>
+                    <td id="197"></td>
+                    <td id="198"></td>
+                    <td id="199"></td>
+                </tr>
+                <tr>
+                    <td id="score" class="scoreboard">SCORE:</td>
+                    <td id="Score" class="score">0</td>
+                </tr>
+            </table>
+        </div>
+        <div class="nexts">
+            <table id="next1" align="center" class="next1">
+                <tr>
+                    <p class="next">NEXT</p>
+                </tr>
+                <tr>
+                    <td id="h0"></td>
+                    <td id="h1"></td>
+                    <td id="h2"></td>
+                    <td id="h3"></td>
+                </tr>
+                <tr>
+                    <td id="h4"></td>
+                    <td id="h5"></td>
+                    <td id="h6"></td>
+                    <td id="h7"></td>
+                </tr>
+                <tr>
+                    <td id="h8"></td>
+                    <td id="h9"></td>
+                    <td id="h10"></td>
+                    <td id="h11"></td>
+                </tr>
+                <tr>
+                    <td id="h12"></td>
+                    <td id="h13"></td>
+                    <td id="h14"></td>
+                    <td id="h15"></td>
+                </tr>
+            </table>
+            <table id="next2" align="center" class="next1">
+                <tr>
+                    <td id="a0"></td>
+                    <td id="a1"></td>
+                    <td id="a2"></td>
+                    <td id="a3"></td>
+                </tr>
+                <tr>
+                    <td id="a4"></td>
+                    <td id="a5"></td>
+                    <td id="a6"></td>
+                    <td id="a7"></td>
+                </tr>
+                <tr>
+                    <td id="a8"></td>
+                    <td id="a9"></td>
+                    <td id="a10"></td>
+                    <td id="a11"></td>
+                </tr>
+                <tr>
+                    <td id="a12"></td>
+                    <td id="a13"></td>
+                    <td id="a14"></td>
+                    <td id="a15"></td>
+                </tr>
+            </table>
+            <table id="next3" align="center" class="next1">
+                <tr>
+                    <td id="b0"></td>
+                    <td id="b1"></td>
+                    <td id="b2"></td>
+                    <td id="b3"></td>
+                </tr>
+                <tr>
+                    <td id="b4"></td>
+                    <td id="b5"></td>
+                    <td id="b6"></td>
+                    <td id="b7"></td>
+                </tr>
+                <tr>
+                    <td id="b8"></td>
+                    <td id="b9"></td>
+                    <td id="b10"></td>
+                    <td id="b11"></td>
+                </tr>
+                <tr>
+                    <td id="b12"></td>
+                    <td id="b13"></td>
+                    <td id="b14"></td>
+                    <td id="b15"></td>
+                </tr>
+            </table>
+            <table id="next4" align="center" class="next1">
+                <tr>
+                    <td id="c0"></td>
+                    <td id="c1"></td>
+                    <td id="c2"></td>
+                    <td id="c3"></td>
+                </tr>
+                <tr>
+                    <td id="c4"></td>
+                    <td id="c5"></td>
+                    <td id="c6"></td>
+                    <td id="c7"></td>
+                </tr>
+                <tr>
+                    <td id="c8"></td>
+                    <td id="c9"></td>
+                    <td id="c10"></td>
+                    <td id="c11"></td>
+                </tr>
+                <tr>
+                    <td id="c12"></td>
+                    <td id="c13"></td>
+                    <td id="c14"></td>
+                    <td id="c15"></td>
+                </tr>
+            </table>
+            <table id="next5" align="center" class="next1">
+                <tr>
+                    <td id="d0"></td>
+                    <td id="d1"></td>
+                    <td id="d2"></td>
+                    <td id="d3"></td>
+                </tr>
+                <tr>
+                    <td id="d4"></td>
+                    <td id="d5"></td>
+                    <td id="d6"></td>
+                    <td id="d7"></td>
+                </tr>
+                <tr>
+                    <td id="d8"></td>
+                    <td id="d9"></td>
+                    <td id="d10"></td>
+                    <td id="d11"></td>
+                </tr>
+                <tr>
+                    <td id="d12"></td>
+                    <td id="d13"></td>
+                    <td id="d14"></td>
+                    <td id="d15"></td>
+                </tr>
+            </table>
+        <div>
+    </div>
+</body>
+
+</html>
+<script>
+    var box =
+        [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+
+    var hold =
+        [[0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]];
+
+
+    var next =
+        [[0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 0]];
+
+    var next1 =
+        [[0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 0]];
+
+    var next2 =
+        [[0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 0]];
+
+    var next3 =
+        [[0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 0]];
+
+    var next4 =
+        [[0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 0]];
+
+
+    let tumo =
+        [[[0, 0, 0, 0],
+        [0, 1, 1, 0],
+        [0, 1, 1, 0],
+        [0, 0, 0, 0]],
+
+        [[0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [2, 2, 2, 2],
+        [0, 0, 0, 0]],
+
+        [[0, 0, 0, 0],
+        [0, 3, 3, 0],
+        [3, 3, 0, 0],
+        [0, 0, 0, 0]],
+
+        [[0, 0, 0, 0],
+        [4, 4, 0, 0],
+        [0, 4, 4, 0],
+        [0, 0, 0, 0]],
+
+        [[0, 0, 0, 0],
+        [0, 0, 5, 0],
+        [5, 5, 5, 0],
+        [0, 0, 0, 0]],
+
+        [[0, 0, 0, 0],
+        [6, 0, 0, 0],
+        [6, 6, 6, 0],
+        [0, 0, 0, 0]],
+
+        [[0, 0, 0, 0],
+        [0, 7, 0, 0],
+        [7, 7, 7, 0],
+        [0, 0, 0, 0]],
+        ]
+    setInterval(color, 10);
+    setInterval(always, 10);
+    let timerId = setInterval(block, 300);
+    window.onload = start();
+    if(rn == 1 || rn == 2){
+            var py = 0;
+            var px = 5;
+        }
+        else{
+            py = 0;
+            px = 4;
+        }
+    
+    var r1 = [rn, rn1, rn2, rn3, rn4, rn5, rn6];
+    var r2 = [rrn, rrn1, rrn2, rrn3, rrn4, rrn5, rrn6];
+    var count = 0;　//ブロック落とすスピード
+    var rn_count = 0;
+    var time = 0;   //ブロックが床に落ちてからのスピード
+    var rota = 0; //ローテーション　つも回転数
+    var rc = 0; //rotation count
+    var hold_ct = 0;
+    var hold_count = 0;
+    var hold_num1 = 0;
+    var hold_num2 = 0;
+    var dc = 0;
+    var drop_count = 0;
+    var c = 0;
+    var score = 0;
+    var line_count = 0;
+    var btb = false;
+    var ren = 0;
+    for (var i = 0; i < 16; i++) {
+        var x = Math.floor(i % 4);
+        var y = Math.floor(i / 4);
+        if (hold[y][x] == 0) {
+            document.getElementById("q" + i).style.backgroundColor = 'white';
+        }
+    }
+
+
+    function start() {
+        for (var i = 0; i < 7; i++) {
+            if (i == 0) {
+                rn = 5;
+                rrn = Math.floor(Math.random() * 7) + 1;
+            }
+            if (i == 1) {
+                rn1 = Math.floor(Math.random() * 7) + 1;
+                while (rn1 == rn) {
+                    rn1 = Math.floor(Math.random() * 7) + 1;
+                }
+                rrn1 = Math.floor(Math.random() * 7) + 1;
+                while (rrn1 == rrn) {
+                    rrn1 = Math.floor(Math.random() * 7) + 1;
+                }
+            }
+            if (i == 2) {
+                rn2 = Math.floor(Math.random() * 7) + 1;
+                while (rn2 == rn1 || rn2 == rn) {
+                    rn2 = Math.floor(Math.random() * 7) + 1;
+                }
+                rrn2 = Math.floor(Math.random() * 7) + 1;
+                while (rrn2 == rrn1 || rrn2 == rrn) {
+                    rrn2 = Math.floor(Math.random() * 7) + 1;
+                }
+            }
+            if (i == 3) {
+                rn3 = Math.floor(Math.random() * 7) + 1;
+                while (rn3 == rn1 || rn3 == rn2 || rn3 == rn) {
+                    rn3 = Math.floor(Math.random() * 7) + 1;
+                }
+                rrn3 = Math.floor(Math.random() * 7) + 1;
+                while (rrn3 == rrn1 || rrn3 == rrn2 || rrn3 == rrn) {
+                    rrn3 = Math.floor(Math.random() * 7) + 1;
+                }
+            }
+            if (i == 4) {
+                rn4 = Math.floor(Math.random() * 7) + 1;
+                while (rn4 == rn1 || rn4 == rn2 || rn4 == rn3 || rn4 == rn) {
+                    rn4 = Math.floor(Math.random() * 7) + 1;
+                }
+                rrn4 = Math.floor(Math.random() * 7) + 1;
+                while (rrn4 == rrn1 || rrn4 == rrn2 || rrn4 == rrn3 || rrn4 == rrn) {
+                    rrn4 = Math.floor(Math.random() * 7) + 1;
+                }
+            }
+            if (i == 5) {
+                rn5 = Math.floor(Math.random() * 7) + 1;
+                while (rn5 == rn1 || rn5 == rn2 || rn5 == rn3 || rn5 == rn4 || rn5 == rn) {
+                    rn5 = Math.floor(Math.random() * 7) + 1;
+                }
+                rrn5 = Math.floor(Math.random() * 7) + 1;
+                while (rrn5 == rrn1 || rrn5 == rrn2 || rrn5 == rrn3 || rrn5 == rrn4 || rrn5 == rrn) {
+                    rrn5 = Math.floor(Math.random() * 7) + 1;
+                }
+            }
+            if (i == 6) {
+                rn6 = Math.floor(Math.random() * 7) + 1;
+                while (rn6 == rn1 || rn6 == rn2 || rn6 == rn3 || rn6 == rn4 || rn6 == rn5 || rn6 == rn) {
+                    rn6 = Math.floor(Math.random() * 7) + 1;
+                }
+                rrn6 = Math.floor(Math.random() * 7) + 1;
+                while (rrn6 == rrn1 || rrn6 == rrn2 || rrn6 == rrn3 || rrn6 == rrn4 || rrn6 == rrn5 || rrn6 == rrn) {
+                    rrn6 = Math.floor(Math.random() * 7) + 1;
+                }
+            }
+        }
+    }
+
+    function block() {
+        if (rn == 0) {
+            if (py <= 19) {
+                if (box[py + 1][px] == 0) {
+                    py += 1;
+                    if (py >= 1) {
+                        white();
+                    }
+
+                }
+                else {//設置されそうになったら時間を稼いでreに送る
+                    time += 1;
+                    if (time >= 7) {
+                        re();
+                    }
+                }
+            }
+        }
+        if (rn == 1) {
+            if (box[py + 2][px] !== 0 || box[py + 2][px - 1] !== 0 || py == 18) {
+                time += 1;
+                if (time >= 7) {
+                    re();
+                }
+            }
+            else {
+                py += 1;
+                white();
+            }
+        }
+        if (rn == 2) {
+            if (rota == 0) {
+                if (py + 2 <= 19) {
+                    if (box[py + 2][px - 2] == 0 && box[py + 2][px - 1] == 0 && box[py + 2][px] == 0 && box[py + 2][px + 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 1) {
+                if (py + 3 <= 19) {
+                    if (box[py + 4][px] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 2) {
+                if (py + 3 <= 19) {
+                    if (box[py + 3][px - 2] == 0 && box[py + 3][px - 1] == 0 && box[py + 3][px] == 0 && box[py + 3][px + 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 3) {
+                if (py + 3 <= 19) {
+                    if (box[py + 4][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+        }
+        if (rn == 3) {
+            if (rota == 0) {
+                if (py + 1 <= 19) {
+                    if (box[py + 2][px] == 0 && box[py + 2][px - 1] == 0 && box[py + 1][px + 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 1) {
+                if (py + 2 <= 19) {
+                    if (box[py + 2][px] == 0 && box[py + 3][px + 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 2) {
+                if (py + 2 <= 19) {
+                    if (box[py + 2][px + 1] == 0 && box[py + 3][px - 1] == 0 && box[py + 3][px] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 3) {
+                if (py + 2 <= 19) {
+                    if (box[py + 3][px] == 0 && box[py + 2][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+        }
+        if (rn == 4) {
+            if (rota == 0) {
+                if (py + 1 <= 19) {
+                    if (box[py + 2][px] == 0 && box[py + 2][px + 1] == 0 && box[py + 1][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 1) {
+                if (py + 2 <= 19) {
+                    if (box[py + 3][px] == 0 && box[py + 2][px + 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 2) {
+                if (py + 2 <= 19) {
+                    if (box[py + 3][px] == 0 && box[py + 3][px + 1] == 0 && box[py + 2][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 3) {
+                if (py + 2 <= 19) {
+                    if (box[py + 2][px] == 0 && box[py + 3][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+        }
+        if (rn == 5) {
+            if (rota == 0) {
+                if (py + 1 <= 19) {
+                    if (box[py + 2][px] == 0 && box[py + 2][px + 1] == 0 && box[py + 2][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 1) {
+                if (py + 2 <= 19) {
+                    if (box[py + 3][px] == 0 && box[py + 3][px + 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 2) {
+                if (py + 2 <= 19) {
+                    if (box[py + 3][px - 1] == 0 && box[py + 2][px + 1] == 0 && box[py + 2][px] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 3) {
+                if (py + 2 <= 19) {
+                    if (box[py + 3][px] == 0 && box[py + 1][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+        }
+        if (rn == 6) {
+            if (rota == 0) {
+                if (py + 1 <= 19) {
+                    if (box[py + 2][px] == 0 && box[py + 2][px + 1] == 0 && box[py + 2][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 1) {
+                if (py + 2 <= 19) {
+                    if (box[py + 3][px] == 0 && box[py + 1][px + 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 2) {
+                if (py + 2 <= 19) {
+                    if (box[py + 2][px] == 0 && box[py + 3][px + 1] == 0 && box[py + 2][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 3) {
+                if (py + 2 <= 19) {
+                    if (box[py + 3][px] == 0 && box[py + 3][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+        }
+        if (rn == 7) {
+            if (rota == 0) {
+                if (py + 1 <= 19) {
+                    if (box[py + 2][px] == 0 && box[py + 2][px + 1] == 0 && box[py + 2][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 1) {
+                if (py + 2 <= 19) {
+                    if (box[py + 3][px] == 0 && box[py + 2][px + 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 2) {
+                if (py + 2 <= 19) {
+                    if (box[py + 3][px] == 0 && box[py + 2][px + 1] == 0 && box[py + 2][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+            if (rota == 3) {
+                if (py + 2 <= 19) {
+                    if (box[py + 3][px] == 0 && box[py + 2][px - 1] == 0) {
+                        py += 1;
+                        if (py >= 1) {
+                            white();
+                        }
+                    }
+                    else {//設置されそうになったら時間を稼いでreに送る
+                        time += 1;
+                        if (time >= 7) {
+                            re();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function white() {
+        if (rn == 0) {
+            box[py - 1][px] = 0;
+        }
+        if (rn == 1) {
+            box[py - 1][px - 1] = 0;
+            box[py - 1][px] = 0;
+        }
+        if (rn == 2) {
+            if (rota == 0) {
+                box[py][px - 2] = 0;
+                box[py][px - 1] = 0;
+                box[py][px] = 0;
+                box[py][px + 1] = 0;
+            }
+            if (rota == 1) {
+                box[py - 1][px] = 0;            
+            }
+            if (rota == 2) {
+                box[py + 1][px - 2] = 0;
+                box[py + 1][px - 1] = 0;
+                box[py + 1][px] = 0;
+                box[py + 1][px + 1] = 0;
+            }
+            if (rota == 3) {
+                box[py - 1][px - 1] = 0;
+            }
+        }
+        if (rn == 3) {
+            if (rota == 0) {
+                box[py][px - 1] = 0;
+                box[py - 1][px + 1] = 0;
+                box[py - 1][px] = 0;
+            }
+            if (rota == 1) {
+                box[py][px + 1] = 0;
+                box[py - 1][px] = 0;
+            }
+            if (rota == 2) {
+                box[py + 1][px - 1] = 0;
+                box[py][px + 1] = 0;
+                box[py][px] = 0;
+            }
+            if (rota == 3) {
+                box[py][px] = 0;
+                box[py - 1][px - 1] = 0;
+            }
+        }
+        if (rn == 4) {
+            if (rota == 0) {
+                box[py][px + 1] = 0;
+                box[py - 1][px - 1] = 0;
+                box[py - 1][px] = 0;
+            }
+            if (rota == 1) {
+                box[py][px] = 0;
+                box[py - 1][px + 1] = 0;
+            }
+            if (rota == 2) {
+                box[py][px - 1] = 0;
+                box[py][px] = 0;
+                box[py + 1][px + 1] = 0;
+            }
+            if (rota == 3) {
+                box[py][px - 1] = 0;
+                box[py - 1][px] = 0;
+            }
+        }
+        if (rn == 5) {
+            if (rota == 0) {
+                box[py][px - 1] = 0;
+                box[py - 1][px + 1] = 0;
+                box[py][px] = 0;
+            }
+            if (rota == 1) {
+                box[py + 1][px + 1] = 0;
+                box[py - 1][px] = 0;
+            }
+            if (rota == 2) {
+                box[py][px - 1] = 0;
+                box[py][px] = 0;
+                box[py][px + 1] = 0;
+            }
+            if (rota == 3) {
+                box[py - 1][px - 1] = 0;
+                box[py - 1][px] = 0;
+            }
+        }
+        if (rn == 6) {
+            if (rota == 0) {
+                box[py][px + 1] = 0;
+                box[py][px] = 0;
+                box[py - 1][px - 1] = 0;
+            }
+            if (rota == 1) {
+                box[py - 1][px] = 0;
+                box[py - 1][px + 1] = 0;
+            }
+            if (rota == 2) {
+                box[py][px + 1] = 0;
+                box[py][px] = 0;
+                box[py][px - 1] = 0;
+            }
+            if (rota == 3) {
+                box[py - 1][px] = 0;
+                box[py + 1][px - 1] = 0;
+            }
+        }
+        if (rn == 7) {
+            if (rota == 0) {
+                box[py][px - 1] = 0;
+                box[py][px + 1] = 0;
+                box[py - 1][px] = 0;
+            }
+            if (rota == 1) {
+                box[py][px + 1] = 0;
+                box[py - 1][px] = 0;
+            }
+            if (rota == 2) {
+                box[py][px - 1] = 0;
+                box[py][px + 1] = 0;
+                box[py][px] = 0;
+            }
+            if (rota == 3) {
+                box[py][px - 1] = 0;
+                box[py - 1][px] = 0;
+            }
+        }
+    }
+
+    function re() { //一番上に戻る
+        if(box[0][4] !== 0){
+            alert("Game over");
+        }
+        for (u = 0; u < 20; u++) {
+            if (box[u][0] !== 0 && box[u][1] !== 0 && box[u][2] !== 0 && box[u][3] !== 0 && box[u][4] !== 0 && box[u][5] !== 0 && box[u][6] !== 0 && box[u][7] !== 0 && box[u][8] !== 0 && box[u][9] !== 0) {
+                for (var i = 0; i < 10; i++) {
+                    box[u][i] = 0;
+                }
+                for (var j = 19; j >= 0; j--) {
+                    for (var i = 0; i < 10; i++) {//下から一段下げる
+                        if (u > j) {
+                            if (box[j][i] == 1) {
+                                box[j + 1][i] = 1;
+                                box[j][i] = 0;
+                            }
+                            if (box[j][i] == 2) {
+                                box[j + 1][i] = 2;
+                                box[j][i] = 0;
+                            }
+                            if (box[j][i] == 3) {
+                                box[j + 1][i] = 3;
+                                box[j][i] = 0;
+                            }
+                            if (box[j][i] == 4) {
+                                box[j + 1][i] = 4;
+                                box[j][i] = 0;
+                            }
+                            if (box[j][i] == 5) {
+                                box[j + 1][i] = 5;
+                                box[j][i] = 0;
+                            }
+                            if (box[j][i] == 6) {
+                                box[j + 1][i] = 6;
+                                box[j][i] = 0;
+                            }
+                            if (box[j][i] == 7) {
+                                box[j + 1][i] = 7;
+                                box[j][i] = 0;
+                            }
+                        }
+                    }
+                }
+                line_count += 1;
+            }
+            rota = 0;
+        }
+        if(line_count == 0){
+            score += 0;
+            line_count = 0;
+            btb = false;
+            ren = 0;
+        }
+        else{
+            ren += 1;
+            if((ren - 1) * 50 <= 1000){
+                score += (ren - 1) * 50;
+            }
+            else{
+                score += 1000;
+            }
+        }
+        if(line_count == 1){
+            score += 100;
+            line_count = 0;
+            btb = false;
+        }
+        else if(line_count == 2){
+            score += 300;
+            line_count = 0;
+            btb = false;
+        }
+        else if(line_count == 3){
+            score += 500;
+            line_count = 0;
+            btb = false;
+        }
+        else if(line_count == 4){
+            if(btb == true){
+                score += 2800;
+                line_count = 0;
+                btb = true;
+            }
+            else{
+                score += 800;
+                line_count = 0;
+                btb = true;
+            }
+        }
+
+        a = 0;
+        time = 0;
+        rn = rn1;
+        rn1 = rn2;
+        rn2 = rn3;
+        rn3 = rn4;
+        rn4 = rn5;
+        rn5 = rn6;
+        rn6 = rrn;
+        rrn = rrn1;
+        rrn1 = rrn2;
+        rrn2 = rrn3;
+        rrn3 = rrn4;
+        rrn4 = rrn5;
+        rrn5 = rrn6;
+        if(rn == 1 || rn == 2){
+            py = 0;
+            px = 5;
+        }
+        else{
+            py = 0;
+            px = 4;
+        }
+        rn_count += 1;
+        if (hold_ct !== 0) {
+            hold_ct -= 1;
+        }
+        if (rn_count == 7) {
+            change();
+        }
+    }
+
+    function color() {
+
+        a = 1;
+        if (rn == 0 && a == 1) {//1個
+            if (rota == 0) {
+                box[py][px] = 1;
+                if (rc == 0) {
+                    box[py][px] = 0;
+                    box[py + 2][px] = 0;
+                    box[py][px - 1] = 0;
+                    rc = 1;
+                }
+                if (py >= 19) {
+                    re();
+                }
+            }
+        }
+        if (rn == 1 && a == 1) {//Oミノ
+            box[py][px] = 1;
+            box[py][px - 1] = 1;
+            box[py + 1][px - 1] = 1;
+            box[py + 1][px] = 1;
+            if (py + 1 >= 19) {
+                time += 0.08;
+                if (time > 7) {
+                    re();
+                }
+            }
+
+        }
+        if (rn == 2 && a == 1) {//Iミノ
+            if (rota == 0) {
+                box[py + 1][px - 2] = 2;
+                box[py + 1][px - 1] = 2;
+                box[py + 1][px] = 2;
+                box[py + 1][px + 1] = 2;
+                if (py + 1 >= 19) {
+                    time += 1;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 1) {
+                box[py][px] = 2;
+                box[py + 1][px] = 2;
+                box[py + 2][px] = 2;
+                box[py + 3][px] = 2;
+                if (py + 3 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 2) {
+                box[py + 2][px - 2] = 2;
+                box[py + 2][px - 1] = 2;
+                box[py + 2][px] = 2;
+                box[py + 2][px + 1] = 2;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 3) {
+                box[py][px - 1] = 2;
+                box[py + 1][px - 1] = 2;
+                box[py + 2][px - 1] = 2;
+                box[py + 3][px - 1] = 2;
+                if (py + 3 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+        }
+
+        if (rn == 3 && a == 1) {//Sミノ
+            if (rota == 0) {
+                box[py][px] = 3;
+                box[py][px + 1] = 3;
+                box[py + 1][px] = 3;
+                box[py + 1][px - 1] = 3;
+                if (py + 1 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 1) {
+                box[py][px] = 3;
+                box[py + 2][px + 1] = 3;
+                box[py + 1][px] = 3;
+                box[py + 1][px + 1] = 3;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 2) {
+                box[py + 1][px] = 3;
+                box[py + 1][px + 1] = 3;
+                box[py + 2][px] = 3;
+                box[py + 2][px - 1] = 3;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 3) {
+                box[py][px - 1] = 3;
+                box[py + 2][px] = 3;
+                box[py + 1][px] = 3;
+                box[py + 1][px - 1] = 3;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+        }
+
+        if (rn == 4 && a == 1) {//Zミノ
+            if (rota == 0) {
+                box[py][px] = 4;
+                box[py][px - 1] = 4;
+                box[py + 1][px + 1] = 4;
+                box[py + 1][px] = 4;
+                if (py + 1 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 1) {
+                box[py + 2][px] = 4;
+                box[py][px + 1] = 4;
+                box[py + 1][px + 1] = 4;
+                box[py + 1][px] = 4;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 2) {
+                box[py + 1][px] = 4;
+                box[py + 1][px - 1] = 4;
+                box[py + 2][px + 1] = 4;
+                box[py + 2][px] = 4;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 3) {
+                box[py][px] = 4;
+                box[py + 1][px] = 4;
+                box[py + 1][px - 1] = 4;
+                box[py + 2][px - 1] = 4;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+        }
+
+        if (rn == 5 && a == 1) {//Lミノ
+            if (rota == 0) {
+                box[py][px + 1] = 5;
+                box[py + 1][px - 1] = 5;
+                box[py + 1][px + 1] = 5;
+                box[py + 1][px] = 5;
+                if (py + 1 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 1) {
+                box[py + 2][px + 1] = 5;
+                box[py][px] = 5;
+                box[py + 1][px] = 5;
+                box[py + 2][px] = 5;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 2) {
+                box[py + 2][px - 1] = 5;
+                box[py + 1][px - 1] = 5;
+                box[py + 1][px + 1] = 5;
+                box[py + 1][px] = 5;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 3) {
+                box[py][px - 1] = 5;
+                box[py + 1][px] = 5;
+                box[py + 2][px] = 5;
+                box[py][px] = 5;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+        }
+
+        if (rn == 6 && a == 1) {//Jミノ
+            if (rota == 0) {
+                box[py][px - 1] = 6;
+                box[py + 1][px - 1] = 6;
+                box[py + 1][px + 1] = 6;
+                box[py + 1][px] = 6;
+                if (py + 1 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 1) {
+                box[py][px + 1] = 6;
+                box[py + 2][px] = 6;
+                box[py + 1][px] = 6;
+                box[py][px] = 6;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 2) {
+                box[py + 2][px + 1] = 6;
+                box[py + 1][px - 1] = 6;
+                box[py + 1][px + 1] = 6;
+                box[py + 1][px] = 6;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 3) {
+                box[py + 2][px - 1] = 6;
+                box[py + 2][px] = 6;
+                box[py + 1][px] = 6;
+                box[py][px] = 6;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+        }
+
+        if (rn == 7 && a == 1) {//Tミノ
+            if (rota == 0) {
+                box[py][px] = 7;
+                box[py + 1][px + 1] = 7;
+                box[py + 1][px - 1] = 7;
+                box[py + 1][px] = 7;
+                if (py + 1 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 1) {
+                box[py][px] = 7;
+                box[py + 1][px + 1] = 7;
+                box[py + 2][px] = 7;
+                box[py + 1][px] = 7;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+            if (rota == 2) {
+                box[py + 1][px + 1] = 7;
+                box[py + 2][px] = 7;
+                box[py + 1][px] = 7;
+                box[py + 1][px - 1] = 7;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+
+            }
+            if (rota == 3) {
+                box[py + 2][px] = 7;
+                box[py + 1][px] = 7;
+                box[py + 1][px - 1] = 7;
+                box[py][px] = 7;
+                if (py + 2 >= 19) {
+                    time += 0.08;
+                    if (time > 7) {
+                        re();
+                    }
+                }
+            }
+        }
+
+        for (var i = 0; i < 200; i++) {
+            var x = Math.floor(i % 10);
+            var y = Math.floor(i / 10);
+            if (box[y][x] == 7) {
+                document.getElementById(i).style.backgroundColor = 'Plum';
+            }
+            if (box[y][x] == 6) {
+                document.getElementById(i).style.backgroundColor = 'DodgerBlue';
+            }
+            if (box[y][x] == 5) {
+                document.getElementById(i).style.backgroundColor = 'orange';
+            }
+            if (box[y][x] == 4) {
+                document.getElementById(i).style.backgroundColor = 'Salmon';
+            }
+            if (box[y][x] == 3) {
+                document.getElementById(i).style.backgroundColor = 'lightgreen';
+            }
+            if (box[y][x] == 2) {
+                document.getElementById(i).style.backgroundColor = 'powderblue';
+            }
+            if (box[y][x] == 1) {
+                document.getElementById(i).style.backgroundColor = 'yellow';
+            }
+            if (box[y][x] == 0) {
+                document.getElementById(i).style.backgroundColor = 'white';
+            }
+        }
+    }
+
+    function always() {
+        r1 = [rn, rn1, rn2, rn3, rn4, rn5, rn6];
+        r2 = [rrn, rrn1, rrn2, rrn3, rrn4, rrn5, rrn6];
+        //title.innerHTML = r1 + "," + r2;
+        if (rn1 == 1) {
+            next = tumo[0];
+        }
+        if (rn1 == 2) {
+            next = tumo[1];
+        }
+        if (rn1 == 3) {
+            next = tumo[2];
+        }
+        if (rn1 == 4) {
+            next = tumo[3];
+        }
+        if (rn1 == 5) {
+            next = tumo[4];
+        }
+        if (rn1 == 6) {
+            next = tumo[5];
+        }
+        if (rn1 == 7) {
+            next = tumo[6];
+        }
+        //
+        if (rn2 == 1) {
+            next1 = tumo[0];
+        }
+        if (rn2 == 2) {
+            next1 = tumo[1];
+        }
+        if (rn2 == 3) {
+            next1 = tumo[2];
+        }
+        if (rn2 == 4) {
+            next1 = tumo[3];
+        }
+        if (rn2 == 5) {
+            next1 = tumo[4];
+        }
+        if (rn2 == 6) {
+            next1 = tumo[5];
+        }
+        if (rn2 == 7) {
+            next1 = tumo[6];
+        }
+        //
+        if (rn3 == 1) {
+            next2 = tumo[0];
+        }
+        if (rn3 == 2) {
+            next2 = tumo[1];
+        }
+        if (rn3 == 3) {
+            next2 = tumo[2];
+        }
+        if (rn3 == 4) {
+            next2 = tumo[3];
+        }
+        if (rn3 == 5) {
+            next2 = tumo[4];
+        }
+        if (rn3 == 6) {
+            next2 = tumo[5];
+        }
+        if (rn3 == 7) {
+            next2 = tumo[6];
+        }
+        //
+        if (rn4 == 1) {
+            next3 = tumo[0];
+        }
+        if (rn4 == 2) {
+            next3 = tumo[1];
+        }
+        if (rn4 == 3) {
+            next3 = tumo[2];
+        }
+        if (rn4 == 4) {
+            next3 = tumo[3];
+        }
+        if (rn4 == 5) {
+            next3 = tumo[4];
+        }
+        if (rn4 == 6) {
+            next3 = tumo[5];
+        }
+        if (rn4 == 7) {
+            next3 = tumo[6];
+        }
+        //
+        if (rn5 == 1) {
+            next4 = tumo[0];
+        }
+        if (rn5 == 2) {
+            next4 = tumo[1];
+        }
+        if (rn5 == 3) {
+            next4 = tumo[2];
+        }
+        if (rn5 == 4) {
+            next4 = tumo[3];
+        }
+        if (rn5 == 5) {
+            next4 = tumo[4];
+        }
+        if (rn5 == 6) {
+            next4 = tumo[5];
+        }
+        if (rn5 == 7) {
+            next4 = tumo[6];
+        }
+
+        for (var i = 0; i < 16; i++) {
+            var x = Math.floor(i % 4);
+            var y = Math.floor(i / 4);
+            if (next[y][x] == 7) {
+                document.getElementById("h" + i).style.backgroundColor = 'Plum';
+            }
+            if (next[y][x] == 6) {
+                document.getElementById("h" + i).style.backgroundColor = 'DodgerBlue';
+            }
+            if (next[y][x] == 5) {
+                document.getElementById("h" + i).style.backgroundColor = 'orange';
+            }
+            if (next[y][x] == 4) {
+                document.getElementById("h" + i).style.backgroundColor = 'Salmon';
+            }
+            if (next[y][x] == 3) {
+                document.getElementById("h" + i).style.backgroundColor = 'lightgreen';
+            }
+            if (next[y][x] == 2) {
+                document.getElementById("h" + i).style.backgroundColor = 'skyblue';
+            }
+            if (next[y][x] == 1) {
+                document.getElementById("h" + i).style.backgroundColor = 'yellow';
+            }
+            if (next[y][x] == 0) {
+                document.getElementById("h" + i).style.backgroundColor = 'white';
+            }
+            if (next1[y][x] == 7) {
+                document.getElementById("a" + i).style.backgroundColor = 'Plum';
+            }
+            if (next1[y][x] == 6) {
+                document.getElementById("a" + i).style.backgroundColor = 'DodgerBlue';
+            }
+            if (next1[y][x] == 5) {
+                document.getElementById("a" + i).style.backgroundColor = 'orange';
+            }
+            if (next1[y][x] == 4) {
+                document.getElementById("a" + i).style.backgroundColor = 'Salmon';
+            }
+            if (next1[y][x] == 3) {
+                document.getElementById("a" + i).style.backgroundColor = 'lightgreen';
+            }
+            if (next1[y][x] == 2) {
+                document.getElementById("a" + i).style.backgroundColor = 'skyblue';
+            }
+            if (next1[y][x] == 1) {
+                document.getElementById("a" + i).style.backgroundColor = 'yellow';
+            }
+            if (next1[y][x] == 0) {
+                document.getElementById("a" + i).style.backgroundColor = 'white';
+            }
+            if (next2[y][x] == 7) {
+                document.getElementById("b" + i).style.backgroundColor = 'Plum';
+            }
+            if (next2[y][x] == 6) {
+                document.getElementById("b" + i).style.backgroundColor = 'DodgerBlue';
+            }
+            if (next2[y][x] == 5) {
+                document.getElementById("b" + i).style.backgroundColor = 'orange';
+            }
+            if (next2[y][x] == 4) {
+                document.getElementById("b" + i).style.backgroundColor = 'Salmon';
+            }
+            if (next2[y][x] == 3) {
+                document.getElementById("b" + i).style.backgroundColor = 'lightgreen';
+            }
+            if (next2[y][x] == 2) {
+                document.getElementById("b" + i).style.backgroundColor = 'skyblue';
+            }
+            if (next2[y][x] == 1) {
+                document.getElementById("b" + i).style.backgroundColor = 'yellow';
+            }
+            if (next2[y][x] == 0) {
+                document.getElementById("b" + i).style.backgroundColor = 'white';
+            }
+            if (next3[y][x] == 7) {
+                document.getElementById("c" + i).style.backgroundColor = 'Plum';
+            }
+            if (next3[y][x] == 6) {
+                document.getElementById("c" + i).style.backgroundColor = 'DodgerBlue';
+            }
+            if (next3[y][x] == 5) {
+                document.getElementById("c" + i).style.backgroundColor = 'orange';
+            }
+            if (next3[y][x] == 4) {
+                document.getElementById("c" + i).style.backgroundColor = 'Salmon';
+            }
+            if (next3[y][x] == 3) {
+                document.getElementById("c" + i).style.backgroundColor = 'lightgreen';
+            }
+            if (next3[y][x] == 2) {
+                document.getElementById("c" + i).style.backgroundColor = 'skyblue';
+            }
+            if (next3[y][x] == 1) {
+                document.getElementById("c" + i).style.backgroundColor = 'yellow';
+            }
+            if (next3[y][x] == 0) {
+                document.getElementById("c" + i).style.backgroundColor = 'white';
+            }
+            if (next4[y][x] == 7) {
+                document.getElementById("d" + i).style.backgroundColor = 'Plum';
+            }
+            if (next4[y][x] == 6) {
+                document.getElementById("d" + i).style.backgroundColor = 'DodgerBlue';
+            }
+            if (next4[y][x] == 5) {
+                document.getElementById("d" + i).style.backgroundColor = 'orange';
+            }
+            if (next4[y][x] == 4) {
+                document.getElementById("d" + i).style.backgroundColor = 'Salmon';
+            }
+            if (next4[y][x] == 3) {
+                document.getElementById("d" + i).style.backgroundColor = 'lightgreen';
+            }
+            if (next4[y][x] == 2) {
+                document.getElementById("d" + i).style.backgroundColor = 'skyblue';
+            }
+            if (next4[y][x] == 1) {
+                document.getElementById("d" + i).style.backgroundColor = 'yellow';
+            }
+            if (next4[y][x] == 0) {
+                document.getElementById("d" + i).style.backgroundColor = 'white';
+            }
+        }
+        Score.innerHTML = score;
+    }
+
+    document.onkeydown = move;
+    function move(event) {
+        if (event.which == 37) {
+            if (rn == 0) {
+                if (px >= 1 && box[py][px - 1] == 0) {
+                    px -= 1;
+                    box[py][px + 1] = 0;
+                }
+            }
+            if (rn == 1) {
+                if (px >= 2 && box[py][px - 2] == 0 && box[py + 1][px - 2] == 0) {
+                    px -= 1;
+                    box[py][px + 1] = 0;
+                    box[py + 1][px + 1] = 0;
+                }
+            }
+            if (rn == 2) {
+                if (rota == 0) {
+                    if (px >= 3 && box[py + 1][px - 3] == 0) {
+                        px -= 1;
+                        box[py + 1][px + 2] = 0;
+                    }
+                }
+                if (rota == 1) {
+                    if (px >= 1 && box[py][px - 1] == 0 && box[py + 1][px - 1] == 0 && box[py + 2][px - 1] == 0 && box[py + 3][px - 1] == 0) {
+                        px -= 1;
+                        box[py][px + 1] = 0;
+                        box[py + 1][px + 1] = 0;
+                        box[py + 2][px + 1] = 0;
+                        box[py + 3][px + 1] = 0;
+                    }
+                }
+                if (rota == 2) {
+                    if (px >= 3 && box[py + 2][px - 3] == 0) {
+                        px -= 1;
+                        box[py + 2][px + 2] = 0;
+                    }
+                }
+                if (rota == 3) {
+                    if (px >= 1 && box[py][px - 2] == 0 && box[py + 1][px - 2] == 0 && box[py + 2][px - 2] == 0 && box[py + 3][px - 2] == 0) {
+                        px -= 1;
+                        box[py][px] = 0;
+                        box[py + 1][px] = 0;
+                        box[py + 2][px] = 0;
+                        box[py + 3][px] = 0;
+                    }
+                }
+            }
+            if (rn == 3) {
+                if (rota == 0) {
+                    if (px >= 2 && box[py][px - 1] == 0 && box[py + 1][px - 2] == 0) {
+                        px -= 1;
+                        box[py][px + 2] = 0;
+                        box[py + 1][px + 1] = 0;
+                    }
+                }
+                if (rota == 1) {
+                    if (px >= 1 && box[py][px - 1] == 0 && box[py + 1][px - 1] == 0 && box[py + 2][px] == 0) {
+                        px -= 1;
+                        box[py][px + 1] = 0;
+                        box[py + 1][px + 2] = 0;
+                        box[py + 2][px + 2] = 0;
+                    }
+                }
+                if (rota == 2) {
+                    if (px >= 2 && box[py + 1][px - 1] == 0 && box[py + 2][px - 2] == 0) {
+                        px -= 1;
+                        box[py + 1][px + 2] = 0;
+                        box[py + 2][px + 1] = 0;
+                    }
+                }
+                if (rota == 3) {
+                    if (px >= 2 && box[py][px - 2] == 0 && box[py + 1][px - 2] == 0 && box[py + 2][px - 1] == 0) {
+                        px -= 1;
+                        box[py][px] = 0;
+                        box[py + 1][px + 1] = 0;
+                        box[py + 2][px + 1] = 0;
+                    }
+                }
+            }
+            if (rn == 4) {
+                if (rota == 0) {
+                    if (px >= 2 && box[py][px - 2] == 0 && box[py + 1][px - 1] == 0) {
+                        px -= 1;
+                        box[py][px + 1] = 0;
+                        box[py + 1][px + 2] = 0;
+                    }
+                }
+                if (rota == 1) {
+                    if (px >= 1 && box[py][px] == 0 && box[py + 1][px - 1] == 0 && box[py + 2][px - 1] == 0) {
+                        px -= 1;
+                        box[py][px + 2] = 0;
+                        box[py + 1][px + 2] = 0;
+                        box[py + 2][px + 1] = 0;
+                    }
+                }
+                if (rota == 2) {
+                    if (px >= 2 && box[py + 1][px - 2] == 0 && box[py + 2][px - 1] == 0) {
+                        px -= 1;
+                        box[py + 2][px + 2] = 0;
+                        box[py + 1][px + 1] = 0;
+                    }
+                }
+                if (rota == 3) {
+                    if (px >= 2 && box[py + 2][px - 2] == 0 && box[py + 1][px - 2] == 0 && box[py][px - 1] == 0) {
+                        px -= 1;
+                        box[py][px + 1] = 0;
+                        box[py + 1][px + 1] = 0;
+                        box[py + 2][px] = 0;
+                    }
+                }
+            }
+            if (rn == 5) {
+                if (rota == 0) {
+                    if (px >= 2 && box[py + 1][px - 2] == 0 && box[py][px] == 0) {
+                        px -= 1;
+                        box[py][px + 2] = 0;
+                        box[py + 1][px + 2] = 0;
+                    }
+                }
+                if (rota == 1) {
+                    if (px >= 1 && box[py + 1][px - 1] == 0 && box[py][px - 1] == 0 && box[py + 2][px - 1] == 0) {
+                        px -= 1;
+                        box[py][px + 1] = 0;
+                        box[py + 1][px + 1] = 0;
+                        box[py + 2][px + 2] = 0;
+                    }
+                }
+                if (rota == 2) {
+                    if (px >= 2 && box[py + 1][px - 2] == 0 && box[py + 2][px - 2] == 0) {
+                        px -= 1;
+                        box[py + 1][px + 2] = 0;
+                        box[py + 2][px] = 0;
+                    }
+                }
+                if (rota == 3) {
+                    if (px >= 2 && box[py][px - 2] == 0 && box[py + 1][px - 1] == 0 && box[py + 2][px - 1] == 0) {
+                        px -= 1;
+                        box[py][px + 1] = 0;
+                        box[py + 1][px + 1] = 0;
+                        box[py + 2][px + 1] = 0;
+                    }
+                }
+            }
+            if (rn == 6) {
+                if (rota == 0) {
+                    if (px >= 2 && box[py + 1][px - 2] == 0 && box[py][px - 2] == 0) {
+                        px -= 1;
+                        box[py][px] = 0;
+                        box[py + 1][px + 2] = 0;
+                    }
+                }
+                if (rota == 1) {
+                    if (px >= 1 && box[py][px - 1] == 0 && box[py + 1][px - 1] == 0 && box[py + 2][px - 1] == 0) {
+                        px -= 1;
+                        box[py][px + 2] = 0;
+                        box[py + 1][px + 1] = 0;
+                        box[py + 2][px + 1] = 0;
+                    }
+                }
+                if (rota == 2) {
+                    if (px >= 2 && box[py + 1][px - 2] == 0 && box[py + 2][px] == 0) {
+                        px -= 1;
+                        box[py + 1][px + 2] = 0;
+                        box[py + 2][px + 2] = 0;
+                    }
+                }
+                if (rota == 3) {
+                    if (px >= 2 && box[py + 2][px - 2] == 0 && box[py + 1][px - 1] == 0 && box[py][px - 1] == 0) {
+                        px -= 1;
+                        box[py][px + 1] = 0;
+                        box[py + 1][px + 1] = 0;
+                        box[py + 2][px + 1] = 0;
+                    }
+                }
+            }
+            if (rn == 7) {
+                if (rota == 0) {
+                    if (px >= 2 && box[py + 1][px - 2] == 0 && box[py][px - 1] == 0) {
+                        px -= 1;
+                        box[py][px + 1] = 0;
+                        box[py + 1][px + 2] = 0;
+                    }
+                }
+                if (rota == 1) {
+                    if (px >= 1 && box[py + 1][px - 1] == 0 && box[py][px - 1] == 0 && box[py + 2][px - 1] == 0) {
+                        px -= 1;
+                        box[py][px + 1] = 0;
+                        box[py + 1][px + 2] = 0;
+                        box[py + 2][px + 1] = 0;
+                    }
+                }
+                if (rota == 2) {
+                    if (px >= 2 && box[py + 1][px - 2] == 0 && box[py + 2][px - 1] == 0) {
+                        px -= 1;
+                        box[py + 2][px + 1] = 0;
+                        box[py + 1][px + 2] = 0;
+                    }
+                }
+                if (rota == 3) {
+                    if (px >= 2 && box[py + 1][px - 2] == 0 && box[py][px - 1] == 0 && box[py + 2][px - 1] == 0) {
+                        px -= 1;
+                        box[py][px + 1] = 0;
+                        box[py + 2][px + 1] = 0;
+                        box[py + 1][px + 1] = 0;
+
+                    }
+                }
+            }
+
+        }
+    //右回転
+        if (event.which == 38 || event.which == 88) {
+            rc = 0;
+            if (rn == 2) {
+                if (rota == 0 && box[py][px] == 0 && box[py + 2][px] == 0 && box[py + 3][px] == 0) {
+                    if (rc == 0) {
+                        box[py + 1][px - 2] = 0;
+                        box[py + 1][px - 1] = 0;
+                        box[py + 1][px + 1] = 0;
+                        rota = 1;
+                        rc = 1;
+                    }
+                }
+                if (rota == 1 && box[py + 2][px - 2] == 0 && box[py + 2][px - 1] == 0 && box[py + 2][px + 1] == 0) {
+                    if (rc == 0) {
+                        box[py][px] = 0;
+                        box[py + 1][px] = 0;
+                        box[py + 3][px] = 0;
+                        rota = 2;
+                        rc = 1;
+                    }
+                }
+                if (rota == 2 && box[py][px - 1] == 0 && box[py + 1][px - 1] == 0 && box[py + 3][px - 1] == 0) {
+                    if (rc == 0) {
+                        box[py + 2][px - 2] = 0;
+                        box[py + 2][px] = 0;
+                        box[py + 2][px + 1] = 0;
+                        rota = 3;
+                        rc = 1;
+                    }
+                }
+                if (rota == 3 && box[py + 1][px - 2] == 0 && box[py + 1][px] == 0 && box[py + 1][px + 1] == 0) {
+                    if (rc == 0) {
+                        box[py][px - 1] = 0;
+                        box[py + 2][px - 1] = 0;
+                        box[py + 3][px - 1] = 0;
+                        rota = 0;
+                        rc = 1;
+                    }
+                }
+            }
+            if (rn == 3) {
+                if (rota == 0 && box[py + 2][px + 1] == 0 && box[py + 1][px + 1] == 0 && box[py][px + 1] !== 0) {
+                    if (rc == 0) {
+                        box[py + 1][px - 1] = 0;
+                        box[py][px + 1] = 0;
+                        rota = 1;
+                        rc = 1;
+                    }
+                }
+                if (rota == 1 && box[py + 2][px - 1] == 0 && box[py + 2][px] == 0 && box[py + 2][px + 1] !== 0) {
+                    if (rc == 0) {
+                        box[py][px] = 0;
+                        box[py + 2][px + 1] = 0;
+                        rota = 2;
+                        rc = 1;
+                    }
+                }
+                if (rota == 2 && box[py + 1][px - 1] == 0 && box[py][px - 1] == 0 && box[py + 2][px - 1] !== 0) {
+                    if (rc == 0) {
+                        box[py + 2][px - 1] = 0;
+                        box[py + 1][px + 1] = 0;
+                        rota = 3;
+                        rc = 1;
+                    }
+                }
+                if (rota == 3 && box[py][px + 1] == 0 && box[py] && box[py][px - 1] !== 0) {
+                    if (rc == 0) {
+                        box[py + 2][px] = 0;
+                        box[py][px - 1] = 0;
+                        rota = 0;
+                        rc = 1;
+                    }
+                }
+            }
+
+            if (rn == 4) {
+                if (rota == 0 && box[py + 2][px] == 0 && box[py][px + 1] == 0 && box[py][px - 1] !== 0) {
+                    if (rc == 0) {
+                    box[py][px] = 0;
+                    box[py][px - 1] = 0;
+                    rota = 1;
+                    rc = 1;
+                }
+                }
+                if (rota == 1 && box[py + 1][px - 1] == 0 && box[py + 2][px + 1] == 0 && box[py][px + 1] !== 0) {
+                    if (rc == 0) {
+                    box[py][px + 1] = 0;
+                    box[py + 1][px + 1] = 0;
+                    rota = 2;
+                    rc = 1;
+                }
+
+                }
+                if (rota == 2 && box[py][px] == 0 && box[py + 2][px - 1] == 0 && box[py + 2][px + 1] !== 0) {
+                    if (rc == 0) {
+                    box[py + 2][px] = 0;
+                    box[py + 2][px + 1] = 0;
+                    rota = 3;
+                    rc = 1;
+                }
+
+                }
+                if (rota == 3 && box[py][px - 1] == 0 && box[py + 1][px + 1] == 0 && box[py + 2][px - 1] !== 0) {
+                    if (rc == 0) {
+                    box[py + 1][px - 1] = 0;
+                    box[py + 2][px - 1] = 0;
+                    rota = 0;
+                    rc = 1;
+                }
+                }
+            }
+
+            if (rn == 5) {
+                if (rota == 0 && box[py][px] == 0 && box[py + 2][px + 1] == 0 && box[py + 2][px] == 0) {
+                    if (rc == 0) {
+                        box[py][px + 1] = 0;
+                        box[py + 1][px + 1] = 0;
+                        box[py + 1][px - 1] = 0;
+                        rc = 1;
+                        rota = 1;
+                    }
+                }
+                if (rota == 1 && box[py + 1][px - 1] == 0 && box[py + 1][px + 1] == 0 && box[py + 2][px - 1] == 0) {
+                    if (rc == 0) {
+                        box[py + 2][px + 1] = 0;
+                        box[py + 2][px] = 0;
+                        box[py][px] = 0;
+                        rc = 1;
+                        rota = 2;
+                    }
+                }
+                if (rota == 2 && box[py][px] == 0 && box[py + 2][px] == 0 && box[py][px - 1] == 0) {
+                    if (rc == 0) {
+                        box[py + 1][px + 1] = 0;
+                        box[py + 2][px - 1] = 0;
+                        box[py + 1][px - 1] = 0;
+                        rc = 1;
+                        rota = 3;
+                    }
+                }
+                if (rota == 3 && box[py + 1][px - 1] == 0 && box[py][px + 1] == 0 && box[py + 1][px + 1] == 0) {
+                    if (rc == 0) {
+                        box[py][px] = 0;
+                        box[py + 2][px] = 0;
+                        box[py][px - 1] = 0;
+                        rota = 0;
+                        rc = 1;
+                    }
+                }
+                else if(rota == 3 && rc == 0 && box[py + 1][px - 1] !== 0 && box[py + 2][px - 1] == 0 && box[py + 2][px - 2] == 0){
+                    box[py][px] = 0;
+                    box[py][px - 1] = 0;
+                    py = py + 1;
+                    px = px - 1;
+                    rota = 0;
+                    rc = 1;
+                }
+                else if(rota == 3 && rc == 0 && box[py + 1][px - 1] == 0 && box[py + 1][px - 2] == 0 && box[py + 1][px + 1] !== 0){
+                    box[py + 2][px] = 0;
+                    box[py][px - 1] = 0;
+                    px = px - 1;
+                    rota = 0;
+                    rc = 1;
+                }
+                else if(rota == 3 && rc == 0 && box[py + 2][px - 1] == 0 && box[py + 2][px - 2] == 0 && box[py + 1][px + 1] !== 0){
+                    box[py][px] = 0;
+                    box[py][px - 1] = 0;
+                    py = py + 1;
+                    px = px - 1;
+                    rota = 0;
+                    rc = 1;
+                }
+            }
+
+            if (rn == 6) {
+                if (rota == 0 && box[py][px] == 0 && box[py][px + 1] == 0 && box[py + 2][px] == 0) {
+                    if (rc == 0) {
+                    box[py][px - 1] = 0;
+                    box[py + 1][px - 1] = 0;
+                    box[py + 1][px + 1] = 0;
+                    rc = 1;
+                    rota = 1;
+                }
+                }
+                if (rota == 1 && box[py + 1][px - 1] == 0 && box[py + 1][px + 1] == 0 && box[py + 2][px + 1] == 0) {
+                    if (rc == 0) {
+                    box[py][px + 1] = 0;
+                    box[py][px] = 0;
+                    box[py + 2][px] = 0;
+                    rc = 1;
+                    rota = 2;
+                }
+                }
+                if (rota == 2 && box[py][px] == 0 && box[py + 2][px] == 0 && box[py + 2][px - 1] == 0) {
+                    if (rc == 0) {
+                    box[py + 2][px + 1] = 0;
+                    box[py + 1][px + 1] = 0;
+                    box[py + 1][px - 1] = 0;
+                    rc = 1;
+                    rota = 3;
+                }
+                }
+                if (rota == 3 && box[py + 1][px - 1] == 0 && box[py][px - 1] == 0 && box[py + 1][px + 1] == 0) {
+                    if (rc == 0) {
+                    box[py + 2][px - 1] = 0;
+                    box[py + 2][px] = 0;
+                    box[py][px] = 0;
+                    rc = 1;
+                    rota = 0;
+                }
+                }
+            }
+
+            if (rn == 7) {
+                if (rota == 0 && rc == 0 && box[py][px - 1] !== 0 && box[py + 2][px] !== 0 && box[py + 2][px - 1] == 0 && box[py + 3][px - 1] == 0 && box[py + 4][px - 1] == 0 && box[py + 3][px] == 0){
+                    box[py][px] = 0;
+                    box[py + 1][px - 1] = 0;
+                    box[py + 1][px + 1] = 0;
+                    box[py + 1][px] = 0;
+                    py = py + 2;
+                    px = px - 1;
+                    rc = 1;
+                    rota = 1;
+                }
+                else if (rota == 0 && box[py + 2][px] == 0) {
+                    if (rc == 0) {
+                    box[py + 1][px - 1] = 0;
+                    rc = 1;
+                    rota = 1;
+                }
+                }
+                if (rota == 1 && rc == 0 && box[py + 1][px - 1] !== 0 && box[py + 1][px + 2] !== 0 && box[py + 2][px - 1] !== 0 && box[py + 3][px + 1] == 0 && box[py + 2][px + 1] == 0 && box[py + 2][px + 2] == 0){
+                    box[py][px] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 1][px + 1] = 0;
+                    py = py + 1;
+                    px = px + 1;
+                    rc = 1;
+                    rota = 2;
+                }
+                else if (rota == 1 && box[py + 1][px - 1] == 0) {
+                    if (rc == 0) {
+                        box[py][px] = 0;
+                        rc = 1;
+                        rota = 2;
+                    }
+                }
+                if (rota == 2 && box[py][px] == 0) {
+                    if (rc == 0) {
+                        box[py + 1][px + 1] = 0;
+                        rc = 1;
+                        rota = 3;
+                    }
+                }
+                if (rota == 3 && box[py + 1][px + 1] == 0) {
+                    if (rc == 0) {
+                    box[py + 2][px] = 0;
+                    rc = 1;
+                    rota = 0;
+                }
+                }
+                else if (rota == 3 &&  rc == 0 && box[py + 1][px + 1] !== 0 && box[py + 2][px + 1] !== 0 && box[py + 1][px - 2] !== 0 && box[py + 2][px - 2] == 0 && box[py + 2][px - 1] == 0) {
+                    if (rc == 0) {
+                        box[py][px] = 0;
+                        box[py + 1][px] = 0;
+                        px = px - 1;
+                        py = py + 1;
+                        rc = 1;
+                        rota = 0;
+                    }
+                }
+            }
+        }
+    //左回転
+        if (event.which == 90) {
+            rc = 0;
+            if (rn == 2) {
+                if (rota == 0 && box[py][px - 1] == 0 && box[py + 2][px - 1] == 0 && box[py + 3][px - 1] == 0) {
+                    if (rc == 0) {
+                        box[py + 1][px - 2] = 0;
+                        box[py + 1][px] = 0;
+                        box[py + 1][px + 1] = 0;
+                        rota = 3;
+                        rc = 1;
+                    }
+                }
+                if (rota == 1 && box[py + 1][px - 2] == 0 && box[py + 1][px - 1] == 0 && box[py + 1][px + 1] == 0) {
+                    if (rc == 0) {
+                        box[py][px] = 0;
+                        box[py + 2][px] = 0;
+                        box[py + 3][px] = 0;
+                        rota = 0;
+                        rc = 1;
+                    }
+                }
+                if (rota == 2 && box[py][px] == 0 && box[py + 1][px] == 0 && box[py + 3][px] == 0) {
+                    if (rc == 0) {
+                        box[py + 2][px - 2] = 0;
+                        box[py + 2][px - 1] = 0;
+                        box[py + 2][px + 1] = 0;
+                        rota = 1;
+                        rc = 1;
+                    }
+                }
+                if (rota == 3 && box[py + 2][px - 2] == 0 && box[py + 2][px] == 0 && box[py + 2][px + 1] == 0) {
+                    if (rc == 0) {
+                        box[py][px - 1] = 0;
+                        box[py + 1][px - 1] = 0;
+                        box[py + 3][px - 1] = 0;
+                        rota = 2;
+                        rc = 1;
+                    }
+                }
+            }
+            if (rn == 3) {　//s
+                if (rota == 0 && box[py][px - 1] == 0 && box[py + 2][px] == 0 && box[py][px + 1] !== 0) {
+                    if (rc == 0) {
+                        box[py][px] = 0;
+                        box[py][px + 1] = 0;
+                        rota = 3;
+                        rc = 1;
+                    }
+                }
+                if (rota == 1 && box[py + 1][px - 1] == 0 && box[py][px + 1] == 0 && box[py + 2][px + 1] !== 0) {
+                    if (rc == 0) {
+                        box[py + 1][px + 1] = 0;
+                        box[py + 2][px + 1] = 0;
+                        rota = 0;
+                        rc = 1;
+                    }
+                }
+                if (rota == 2 && box[py + 2][px + 1] == 0 && box[py][px] == 0 && box[py + 2][px - 1] !== 0) {
+                    if (rc == 0) {
+                        box[py + 2][px - 1] = 0;
+                        box[py + 2][px] = 0;
+                        rota = 1;
+                        rc = 1;
+                    }
+                }
+                if (rota == 3 && box[py + 2][px - 1] == 0 && box[py + 1][px + 1] == 0 && box[py] && box[py][px - 1] !== 0) {
+                    if (rc == 0) {
+                        box[py + 1][px - 1] = 0;
+                        box[py][px - 1] = 0;
+                        rota = 2;
+                        rc = 1;
+                    }
+                }
+            }
+
+            if (rn == 4) { //z
+                if (rota == 0 && box[py + 2][px - 1] == 0 && box[py + 1][px - 1] == 0 && box[py + 1][px + 1] !== 0) {
+                    if (rc == 0) {
+                    box[py][px - 1] = 0;
+                    box[py + 1][px + 1] = 0;
+                    rota = 3;
+                    rc = 1;
+                }
+                }
+                if (rota == 1 && box[py][px - 1] == 0 && box[py][px] == 0 && box[py + 2][px] !== 0) {
+                    if (rc == 0) {
+                    box[py + 2][px] = 0;
+                    box[py][px + 1] = 0;
+                    rota = 0;
+                    rc = 1;
+                }
+
+                }
+                if (rota == 2 && box[py][px + 1] == 0 && box[py + 1][px + 1] == 0 && box[py + 1][px - 1] !== 0) {
+                    if (rc == 0) {
+                    box[py + 1][px - 1] = 0;
+                    box[py + 2][px + 1] = 0;
+                    rota = 1;
+                    rc = 1;
+                }
+
+                }
+                if (rota == 3 && box[py + 2][px] == 0 && box[py + 2][px + 1] == 0 && box[py][px] !== 0) {
+                    if (rc == 0) {
+                    box[py][px] = 0;
+                    box[py + 2][px - 1] = 0;
+                    rota = 2;
+                    rc = 1;
+                }
+                }
+            }
+
+            if (rn == 5) {  //L  
+                if (rota == 0 && box[py][px] == 0 && box[py][px - 1] == 0 && box[py + 2][px] == 0) {
+                    if (rc == 0) {
+                        box[py][px + 1] = 0;
+                        box[py + 1][px + 1] = 0;
+                        box[py + 1][px - 1] = 0;
+                        rc = 1;
+                        rota = 3;
+                    }
+                }
+                if (rota == 1 && box[py + 1][px - 1] == 0 && box[py + 1][px + 1] == 0 && box[py][px + 1] == 0) {
+                    if (rc == 0) {
+                        box[py + 2][px + 1] = 0;
+                        box[py + 2][px] = 0;
+                        box[py][px] = 0;
+                        rc = 1;
+                        rota = 0;
+                    }
+                }
+                if (rota == 2 && box[py][px] == 0 && box[py + 2][px] == 0 && box[py + 2][px + 1] == 0) {
+                    if (rc == 0) {
+                        box[py + 1][px + 1] = 0;
+                        box[py + 2][px - 1] = 0;
+                        box[py + 1][px - 1] = 0;
+                        rc = 1;
+                        rota = 1;
+                    }
+                }
+                if (rota == 3 && box[py + 1][px - 1] == 0 && box[py + 2][px - 1] == 0 && box[py + 1][px + 1] == 0) {
+                    if (rc == 0) {
+                        box[py][px] = 0;
+                        box[py + 2][px] = 0;
+                        box[py][px - 1] = 0;
+                        rota = 2;
+                        rc = 1;
+                    }
+                }
+            }
+
+            if (rn == 6) {  //J  
+                if (rota == 0 && box[py][px] == 0 && box[py + 2][px - 1] == 0 && box[py + 2][px] == 0) {
+                    if (rc == 0) {
+                    box[py][px - 1] = 0;
+                    box[py + 1][px - 1] = 0;
+                    box[py + 1][px + 1] = 0;
+                    rc = 1;
+                    rota = 3;
+                }
+                }
+                if (rota == 1 && box[py + 1][px - 1] == 0 && box[py + 1][px + 1] == 0 && box[py][px - 1] == 0) {
+                    if (rc == 0) {
+                    box[py][px + 1] = 0;
+                    box[py][px] = 0;
+                    box[py + 2][px] = 0;
+                    rc = 1;
+                    rota = 0;
+                }
+                }
+                if (rota == 2 && box[py][px] == 0 && box[py + 2][px] == 0 && box[py][px + 1] == 0) {
+                    if (rc == 0) {
+                    box[py + 2][px + 1] = 0;
+                    box[py + 1][px + 1] = 0;
+                    box[py + 1][px - 1] = 0;
+                    rc = 1;
+                    rota = 1;
+                }
+                }
+                if (rota == 3 && box[py + 1][px - 1] == 0 && box[py + 2][px + 1] == 0 && box[py + 1][px + 1] == 0) {
+                    if (rc == 0) {
+                    box[py + 2][px - 1] = 0;
+                    box[py + 2][px] = 0;
+                    box[py][px] = 0;
+                    rc = 1;
+                    rota = 2;
+                }
+                }
+            }
+
+            if (rn == 7) {
+                if (rota == 0 && box[py + 2][px] == 0) {
+                    if (rc == 0) {
+                    box[py + 1][px + 1] = 0;
+                    rc = 1;
+                    rota = 3;
+                    }
+                }
+                else if (rota == 0 && rc == 0 && box[py][px + 1] !== 0 && box[py + 2][px] !== 0 && box[py + 2][px + 1] == 0 && box[py + 3][px + 1] == 0 && box[py + 4][px + 1] == 0 && box[py + 3][px] == 0){
+                    box[py][px] = 0;
+                    box[py + 1][px - 1] = 0;
+                    box[py + 1][px + 1] = 0;
+                    box[py + 1][px] = 0;
+                    py = py + 2;
+                    px = px + 1;
+                    rc = 1;
+                    rota = 3;
+                }
+                if (rota == 1 && box[py + 1][px - 1] == 0) {
+                    if (rc == 0) {
+                        box[py + 2][px] = 0;
+                        rc = 1;
+                        rota = 0;
+                    }
+                }
+                else if (rota == 1 &&  rc == 0 && box[py + 1][px - 1] !== 0 && box[py + 2][px - 1] !== 0 && box[py + 1][px + 2] !== 0 && box[py + 2][px + 2] == 0 && box[py + 2][px + 1] == 0) {
+                        box[py][px] = 0;
+                        box[py + 1][px] = 0;
+                        px = px + 1;
+                        py = py + 1;
+                        rc = 1;
+                        rota = 0;
+                }
+                if (rota == 2 && box[py][px] == 0) {
+                    if (rc == 0) {
+                        box[py + 1][px - 1] = 0;
+                        rc = 1;
+                        rota = 1;
+                    }
+                }
+                if (rota == 3 && box[py + 1][px + 1] == 0) {
+                    if (rc == 0) {
+                    box[py][px] = 0;
+                    rc = 1;
+                    rota = 2;
+                }
+                }
+                else if (rota == 3 && rc == 0 && box[py + 1][px + 1] !== 0 && box[py + 1][px - 2] !== 0 && box[py + 2][px + 1] !== 0 && box[py + 3][px - 1] == 0 && box[py + 2][px - 1] == 0 && box[py + 2][px - 2] == 0){
+                    box[py][px] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 1][px - 1] = 0;
+                    py = py + 1;
+                    px = px - 1;
+                    rc = 1;
+                    rota = 2;
+                }
+            }
+        }
+        if (event.which == 39) {
+            if (rn == 0) {
+                if (px <= 8 && box[py][px + 1] == 0) {
+                    px += 1;
+                    box[py][px - 1] = 0;
+                }
+            }
+            if (rn == 1) {
+                if (px <= 8 && box[py][px + 1] == 0 && box[py + 1][px + 1] == 0) {
+                    px += 1;
+                    box[py][px - 2] = 0;
+                    box[py + 1][px - 2] = 0;
+                }
+            }
+            if (rn == 2) {
+                if (rota == 0) {
+                    if (px <= 8 && box[py + 1][px + 2] == 0) {
+                        px += 1;
+                        box[py + 1][px - 3] = 0;
+                    }
+                }
+                if (rota == 1) {
+                    if (px <= 9 && box[py][px + 1] == 0 && box[py + 1][px + 1] == 0 && box[py + 2][px + 1] == 0 && box[py + 3][px + 1] == 0) {
+                        px += 1;
+                        box[py][px - 1] = 0;
+                        box[py + 1][px - 1] = 0;
+                        box[py + 2][px - 1] = 0;
+                        box[py + 3][px - 1] = 0;
+                    }
+                }
+                if (rota == 2) {
+                    if (px <= 8 && box[py + 2][px + 2] == 0) {
+                        px += 1;
+                        box[py + 2][px - 3] = 0;
+                    }
+                }
+                if (rota == 3) {
+                    if (px <= 9 && box[py][px] == 0 && box[py + 1][px] == 0 && box[py + 2][px] == 0 && box[py + 3][px] == 0) {
+                        px += 1;
+                        box[py][px - 2] = 0;
+                        box[py + 1][px - 2] = 0;
+                        box[py + 2][px - 2] = 0;
+                        box[py + 3][px - 2] = 0;
+                    }
+                }
+            }
+            if (rn == 3) {
+                if (rota == 0) {
+                    if (px <= 7 && box[py][px + 2] == 0 && box[py + 1][px + 1] == 0) {
+                        px += 1;
+                        box[py][px - 1] = 0;
+                        box[py + 1][px - 2] = 0;
+                    }
+                }
+                if (rota == 1) {
+                    if (px <= 7 && box[py][px + 1] == 0 && box[py + 1][px + 2] == 0 && box[py + 2][px + 2] == 0) {
+                        px += 1;
+                        box[py + 2][px] = 0;
+                        box[py + 1][px - 1] = 0;
+                        box[py][px - 1] = 0;
+                    }
+                }
+                if (rota == 2) {
+                    if (px <= 7 && box[py + 1][px + 2] == 0 && box[py + 2][px + 1] == 0) {
+                        px += 1;
+                        box[py + 1][px - 1] = 0;
+                        box[py + 2][px - 2] = 0;
+                    }
+                }
+                if (rota == 3) {
+                    if (px <= 8 && box[py][px] == 0 && box[py + 1][px + 1] == 0 && box[py + 2][px + 1] == 0) {
+                        px += 1;
+                        box[py + 2][px - 1] = 0;
+                        box[py + 1][px - 2] = 0;
+                        box[py][px - 2] = 0;
+                    }
+                }
+            }
+            if (rn == 4) {
+                if (rota == 0) {
+                    if (px <= 7 && box[py][px + 1] == 0 && box[py + 1][px + 2] == 0) {
+                        px += 1;
+                        box[py][px - 2] = 0;
+                        box[py + 1][px - 1] = 0;
+                    }
+                }
+                if (rota == 1) {
+                    if (px <= 7 && box[py][px + 2] == 0 && box[py + 1][px + 2] == 0 && box[py + 2][px + 1] == 0) {
+                        px += 1;
+                        box[py][px] = 0;
+                        box[py + 1][px - 1] = 0;
+                        box[py + 2][px - 1] = 0;
+                    }
+                }
+                if (rota == 2) {
+                    if (px <= 7 && box[py + 1][px + 1] == 0 && box[py + 2][px + 2] == 0) {
+                        px += 1;
+                        box[py + 1][px - 2] = 0;
+                        box[py + 2][px - 1] = 0;
+                    }
+                }
+                if (rota == 3) {
+                    if (px <= 8 && box[py][px + 1] == 0 && box[py + 1][px + 1] == 0 && box[py + 2][px] == 0) {
+                        px += 1;
+                        box[py][px - 1] = 0;
+                        box[py + 1][px - 2] = 0;
+                        box[py + 2][px - 2] = 0;
+                    }
+                }
+            }
+            if (rn == 5) {
+                if (rota == 0) {
+                    if (px <= 7 && box[py + 1][px + 2] == 0 && box[py][px + 2] == 0) {
+                        px += 1;
+                        box[py][px] = 0;
+                        box[py + 1][px - 2] = 0;
+                    }
+                }
+                if (rota == 1) {
+                    if (px <= 7 && box[py + 2][px + 2] == 0 && box[py][px + 1] == 0 && box[py + 1][px + 1] == 0) {
+                        px += 1;
+                        box[py][px - 1] = 0;
+                        box[py + 1][px - 1] = 0;
+                        box[py + 2][px - 1] = 0;
+                    }
+                }
+                if (rota == 2) {
+                    if (px <= 7 && box[py + 1][px + 2] == 0 && box[py + 2][px] == 0) {
+                        px += 1;
+                        box[py + 2][px - 2] = 0;
+                        box[py + 1][px - 2] = 0;
+                    }
+                }
+                if (rota == 3) {
+                    if (px <= 8 && box[py + 1][px + 1] == 0 && box[py][px + 1] == 0 && box[py + 2][px + 1] == 0) {
+                        px += 1;
+                        box[py][px - 2] = 0;
+                        box[py + 1][px - 1] = 0;
+                        box[py + 2][px - 1] = 0;
+                    }
+                }
+            }
+            if (rn == 6) {
+                if (rota == 0) {
+                    if (px <= 7 && box[py + 1][px + 2] == 0 && box[py][px] == 0) {
+                        px += 1;
+                        box[py][px - 2] = 0;
+                        box[py + 1][px - 2] = 0;
+                    }
+                }
+                if (rota == 1) {
+                    if (px <= 7 && box[py][px + 2] == 0 && box[py + 1][px + 1] == 0 && box[py + 2][px + 1] == 0) {
+                        px += 1;
+                        box[py][px - 1] = 0;
+                        box[py + 1][px - 1] = 0;
+                        box[py + 2][px - 1] = 0;
+                    }
+                }
+                if (rota == 2) {
+                    if (px <= 7 && box[py + 1][px + 2] == 0 && box[py + 2][px + 2] == 0) {
+                        px += 1;
+                        box[py + 1][px - 2] = 0;
+                        box[py + 2][px] = 0;
+                    }
+                }
+                if (rota == 3) {
+                    if (px <= 8 && box[py][px + 1] == 0 && box[py + 1][px + 1] == 0 && box[py + 2][px + 1] == 0) {
+                        px += 1;
+                        box[py + 2][px - 2] = 0;
+                        box[py + 1][px - 1] = 0;
+                        box[py][px - 1] = 0;
+                    }
+                }
+            }
+            if (rn == 7) {
+                if (rota == 0) {
+                    if (px <= 7 && box[py + 1][px + 2] == 0 && box[py][px + 1] == 0) {
+                        px += 1;
+                        box[py][px - 1] = 0;
+                        box[py + 1][px - 2] = 0;
+                    }
+                }
+                if (rota == 1) {
+                    if (px <= 7 && box[py + 1][px + 2] == 0 && box[py][px + 1] == 0 && box[py + 2][px + 1] == 0) {
+                        px += 1;
+                        box[py][px - 1] = 0;
+                        box[py + 1][px - 1] = 0;
+                        box[py + 2][px - 1] = 0;
+                    }
+                }
+                if (rota == 2) {
+                    if (px <= 7 && box[py + 1][px + 2] == 0 && box[py + 2][px + 1] == 0) {
+                        px += 1;
+                        box[py + 2][px - 1] = 0;
+                        box[py + 1][px - 2] = 0;
+                    }
+                }
+                if (rota == 3) {
+                    if (px <= 8 && box[py + 1][px + 1] == 0 && box[py][px + 1] == 0 && box[py + 2][px + 1] == 0) {
+                        px += 1;
+                        box[py][px - 1] = 0;
+                        box[py + 2][px - 1] = 0;
+                        box[py + 1][px - 2] = 0;
+                    }
+                }
+            }
+        }
+        if (event.which == 40) {
+            clearInterval(timerId);
+            timerId = setInterval(block, 50);
+        }
+        if (event.which == 16) {
+            if (hold_ct == 0) {
+                if (hold_count == 0) {
+                    hold_num1 = rn;
+                    hold_count = 1;
+                    if (rn == 1) {
+                            box[py + 1][px] = 0;
+                            box[py + 1][px - 1] = 0;
+                            box[py][px] = 0;
+                            box[py][px - 1] = 0;
+                    }
+                    if (rn == 2) {
+                        if (rota == 0) {
+                            box[py + 1][px - 2] = 0;
+                            box[py + 1][px - 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 1][px + 1] = 0;
+                        }
+                        if (rota == 1) {
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                            box[py + 3][px] = 0;
+                        }
+                        if (rota == 2) {
+                            box[py + 2][px - 2] = 0;
+                            box[py + 2][px - 1] = 0;
+                            box[py + 2][px] = 0;
+                            box[py + 2][px + 1] = 0;
+                        }
+                        if (rota == 3) {
+                            box[py][px - 1] = 0;
+                            box[py + 1][px - 1] = 0;
+                            box[py + 2][px - 1] = 0;
+                            box[py + 3][px - 1] = 0;
+                        }
+                    }
+                    if (rn == 3) {
+                        if (rota == 0) {
+                            box[py][px + 1] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 1][px - 1] = 0;
+                        }
+                        if (rota == 1) {
+                            box[py + 1][px] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px + 1] = 0;
+                            box[py + 2][px + 1] = 0;
+                        }
+                        if (rota == 2) {
+                            box[py + 1][px + 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                            box[py + 2][px - 1] = 0;
+                        }
+                        if (rota == 3) {
+                            box[py + 1][px - 1] = 0;
+                            box[py][px - 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                        }
+                    }
+                    if (rn == 4) {
+                        if (rota == 0) {
+                            box[py + 1][px + 1] = 0;
+                            box[py][px - 1] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                        }
+                        if (rota == 1) {
+                            box[py + 1][px] = 0;
+                            box[py + 1][px + 1] = 0;
+                            box[py + 2][px] = 0;
+                            box[py][px + 1] = 0;
+                        }
+                        if (rota == 2) {
+                            box[py + 1][px - 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px + 1] = 0;
+                            box[py + 2][px] = 0;
+                        }
+                        if (rota == 3) {
+                            box[py + 1][px - 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px - 1] = 0;
+                            box[py][px] = 0;
+                        }
+                    }
+                    if (rn == 5) {
+                        if (rota == 0) {
+                            box[py + 1][px - 1] = 0;
+                            box[py][px + 1] = 0;
+                            box[py + 1][px + 1] = 0;
+                            box[py + 1][px] = 0;
+                        }
+                        if (rota == 1) {
+                            box[py + 2][px + 1] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                        }
+                        if (rota == 2) {
+                            box[py + 1][px - 1] = 0;
+                            box[py + 2][px - 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 1][px + 1] = 0;
+                        }
+                        if (rota == 3) {
+                            box[py][px - 1] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                        }
+                    }
+                    if (rn == 6) {
+                        if (rota == 0) {
+                            box[py + 1][px + 1] = 0;
+                            box[py + 1][px - 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py][px - 1] = 0;
+                        }
+                        if (rota == 1) {
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                            box[py][px + 1] = 0;
+                        }
+                        if (rota == 2) {
+                            box[py + 1][px + 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 1][px - 1] = 0;
+                            box[py + 2][px + 1] = 0;
+                        }
+                        if (rota == 3) {
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                            box[py + 2][px - 1] = 0;
+                        }
+                    }
+                    if (rn == 7) {
+                        if (rota == 0) {
+                            box[py + 1][px - 1] = 0;
+                            box[py + 1][px + 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py][px] = 0;
+                        }
+                        if (rota == 1) {
+                            box[py + 1][px + 1] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+
+                        }
+                        if (rota == 2) {
+                            box[py + 1][px - 1] = 0;
+                            box[py + 1][px + 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                        }
+                        if (rota == 3) {
+                            box[py + 1][px - 1] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                        }
+                    }
+                    if (hold_num1 == 1) {
+                        hold = tumo[0]
+                    }
+                    if (hold_num1 == 2) {
+                        hold = tumo[1]
+                    }
+                    if (hold_num1 == 3) {
+                        hold = tumo[2]
+                    }
+                    if (hold_num1 == 4) {
+                        hold = tumo[3]
+                    }
+                    if (hold_num1 == 5) {
+                        hold = tumo[4]
+                    }
+                    if (hold_num1 == 6) {
+                        hold = tumo[5]
+                    }
+                    if (hold_num1 == 7) {
+                        hold = tumo[6]
+                    }
+                    for (var i = 0; i < 16; i++) {
+                        var x = Math.floor(i % 4);
+                        var y = Math.floor(i / 4);
+                        if (hold[y][x] == 7) {
+                            document.getElementById("q" + i).style.backgroundColor = 'Plum';
+                        }
+                        if (hold[y][x] == 6) {
+                            document.getElementById("q" + i).style.backgroundColor = 'DodgerBlue';
+                        }
+                        if (hold[y][x] == 5) {
+                            document.getElementById("q" + i).style.backgroundColor = 'orange';
+                        }
+                        if (hold[y][x] == 4) {
+                            document.getElementById("q" + i).style.backgroundColor = 'Salmon';
+                        }
+                        if (hold[y][x] == 3) {
+                            document.getElementById("q" + i).style.backgroundColor = 'lightgreen';
+                        }
+                        if (hold[y][x] == 2) {
+                            document.getElementById("q" + i).style.backgroundColor = 'skyblue';
+                        }
+                        if (hold[y][x] == 1) {
+                            document.getElementById("q" + i).style.backgroundColor = 'yellow';
+                        }
+                        if (hold[y][x] == 0) {
+                            document.getElementById("q" + i).style.backgroundColor = 'white';
+                        }
+                    }
+                    re();
+                }
+                else if (hold_count == 1) {
+                    hold_num2 = hold_num1;
+                    hold_num1 = rn;
+                    if (rn == 1) {
+                            box[py + 1][px] = 0;
+                            box[py + 1][px - 1] = 0;
+                            box[py][px] = 0;
+                            box[py][px - 1] = 0;
+                    }
+                    if (rn == 2) {
+                        if (rota == 0) {
+                            box[py + 1][px - 2] = 0;
+                            box[py + 1][px - 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 1][px + 1] = 0;
+                        }
+                        if (rota == 1) {
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                            box[py + 3][px] = 0;
+                        }
+                        if (rota == 2) {
+                            box[py + 2][px - 2] = 0;
+                            box[py + 2][px - 1] = 0;
+                            box[py + 2][px] = 0;
+                            box[py + 2][px + 1] = 0;
+                        }
+                        if (rota == 3) {
+                            box[py][px - 1] = 0;
+                            box[py + 1][px - 1] = 0;
+                            box[py + 2][px - 1] = 0;
+                            box[py + 3][px - 1] = 0;
+                        }
+                    }
+                    if (rn == 3) {
+                        if (rota == 0) {
+                            box[py][px + 1] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 1][px - 1] = 0;
+                        }
+                        if (rota == 1) {
+                            box[py + 1][px] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px + 1] = 0;
+                            box[py + 2][px + 1] = 0;
+                        }
+                        if (rota == 2) {
+                            box[py + 1][px + 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                            box[py + 2][px - 1] = 0;
+                        }
+                        if (rota == 3) {
+                            box[py + 1][px - 1] = 0;
+                            box[py][px - 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                        }
+                    }
+                    if (rn == 4) {
+                        if (rota == 0) {
+                            box[py + 1][px + 1] = 0;
+                            box[py][px - 1] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                        }
+                        if (rota == 1) {
+                            box[py + 1][px] = 0;
+                            box[py + 1][px + 1] = 0;
+                            box[py + 2][px] = 0;
+                            box[py][px + 1] = 0;
+                        }
+                        if (rota == 2) {
+                            box[py + 1][px - 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px + 1] = 0;
+                            box[py + 2][px] = 0;
+                        }
+                        if (rota == 3) {
+                            box[py + 1][px - 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px - 1] = 0;
+                            box[py][px] = 0;
+                        }
+                    }
+                    if (rn == 5) {
+                        if (rota == 0) {
+                            box[py + 1][px - 1] = 0;
+                            box[py][px + 1] = 0;
+                            box[py + 1][px + 1] = 0;
+                            box[py + 1][px] = 0;
+                        }
+                        if (rota == 1) {
+                            box[py + 2][px + 1] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                        }
+                        if (rota == 2) {
+                            box[py + 1][px - 1] = 0;
+                            box[py + 2][px - 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 1][px + 1] = 0;
+                        }
+                        if (rota == 3) {
+                            box[py][px - 1] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                        }
+                    }
+                    if (rn == 6) {
+                        if (rota == 0) {
+                            box[py + 1][px + 1] = 0;
+                            box[py + 1][px - 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py][px - 1] = 0;
+                        }
+                        if (rota == 1) {
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                            box[py][px + 1] = 0;
+                        }
+                        if (rota == 2) {
+                            box[py + 1][px + 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 1][px - 1] = 0;
+                            box[py + 2][px + 1] = 0;
+                        }
+                        if (rota == 3) {
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                            box[py + 2][px - 1] = 0;
+                        }
+                    }
+                    if (rn == 7) {
+                        if (rota == 0) {
+                            box[py + 1][px - 1] = 0;
+                            box[py + 1][px + 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py][px] = 0;
+                        }
+                        if (rota == 1) {
+                            box[py + 1][px + 1] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+
+                        }
+                        if (rota == 2) {
+                            box[py + 1][px - 1] = 0;
+                            box[py + 1][px + 1] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                        }
+                        if (rota == 3) {
+                            box[py + 1][px - 1] = 0;
+                            box[py][px] = 0;
+                            box[py + 1][px] = 0;
+                            box[py + 2][px] = 0;
+                        }
+                    }
+                    px = 5;
+                    py = 0;
+                    if (hold_num1 == 1) {
+                        hold = tumo[0]
+                    }
+                    if (hold_num1 == 2) {
+                        hold = tumo[1]
+                    }
+                    if (hold_num1 == 3) {
+                        hold = tumo[2]
+                    }
+                    if (hold_num1 == 4) {
+                        hold = tumo[3]
+                    }
+                    if (hold_num1 == 5) {
+                        hold = tumo[4]
+                    }
+                    if (hold_num1 == 6) {
+                        hold = tumo[5]
+                    }
+                    if (hold_num1 == 7) {
+                        hold = tumo[6]
+                    }
+                    for (var i = 0; i < 16; i++) {
+                        var x = Math.floor(i % 4);
+                        var y = Math.floor(i / 4);
+                        if (hold[y][x] == 7) {
+                            document.getElementById("q" + i).style.backgroundColor = 'Plum';
+                        }
+                        if (hold[y][x] == 6) {
+                            document.getElementById("q" + i).style.backgroundColor = 'DodgerBlue';
+                        }
+                        if (hold[y][x] == 5) {
+                            document.getElementById("q" + i).style.backgroundColor = 'orange';
+                        }
+                        if (hold[y][x] == 4) {
+                            document.getElementById("q" + i).style.backgroundColor = 'Salmon';
+                        }
+                        if (hold[y][x] == 3) {
+                            document.getElementById("q" + i).style.backgroundColor = 'lightgreen';
+                        }
+                        if (hold[y][x] == 2) {
+                            document.getElementById("q" + i).style.backgroundColor = 'skyblue';
+                        }
+                        if (hold[y][x] == 1) {
+                            document.getElementById("q" + i).style.backgroundColor = 'yellow';
+                        }
+                        if (hold[y][x] == 0) {
+                            document.getElementById("q" + i).style.backgroundColor = 'white';
+                        }
+                    }
+                    rn = hold_num2;
+                }
+
+                hold_ct = 1;
+            }
+            rota = 0;
+        }
+        if (event.which == 32) {
+            dc = 1;
+            if (rn == 1) {
+                while (py + dc < 19 && box[py + 1 + dc][px - 1] == 0 && box[py + 1 + dc][px] == 0) {
+                    dc += 1;
+                }
+                box[py][px] = 0;
+                box[py][px - 1] = 0;
+                box[py + 1][px] = 0;
+                box[py + 1][px - 1] = 0;
+                py = py + dc - 1;
+                score += (dc - 1) * 2;
+                time = 8;
+                }
+            if (rn == 2) {
+                if (rota == 0) {
+                    while (py + dc < 19 && box[py + 1 + dc][px - 2] == 0 && box[py + 1 + dc][px - 1] == 0 && box[py + 1 + dc][px] == 0 && box[py + 1 + dc][px + 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px - 2] = 0;
+                    box[py + 1][px - 1] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 1][px + 1] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+                }
+                if (rota == 1) {
+                    while (py + dc + 2 < 19 && box[py + 3 + dc][px] == 0) {
+                        dc += 1;
+                    }
+                    box[py][px] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 2][px] = 0;
+                    box[py + 3][px] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+                }
+                if (rota == 2) {
+                    while (py + dc + 1 < 19 && box[py + 2 + dc][px - 2] == 0 && box[py + 2 + dc][px - 1] == 0 && box[py + 2 + dc][px] == 0 && box[py + 2 + dc][px + 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 2][px - 2] = 0;
+                    box[py + 2][px - 1] = 0;
+                    box[py + 2][px] = 0;
+                    box[py + 2][px + 1] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+                }
+                if (rota == 3) {
+                    while (py + dc + 2 < 19 && box[py + 3 + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py][px - 1] = 0;
+                    box[py + 1][px - 1] = 0;
+                    box[py + 2][px - 1] = 0;
+                    box[py + 3][px - 1] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+                }
+            }
+            if (rn == 3) {
+                if (rota == 0) {
+                    while (py + dc < 19 && box[py + 1 + dc][px] == 0 && box[py + 1 + dc][px - 1] == 0 && box[py + dc][px + 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py][px + 1] = 0;
+                    box[py][px] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 1][px - 1] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+                }
+                if (rota == 1) {
+                    while (py + dc + 1 < 19 && box[py + 1 + dc][px] == 0 && box[py + 2 + dc][px + 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px] = 0;
+                    box[py][px] = 0;
+                    box[py + 1][px + 1] = 0;
+                    box[py + 2][px + 1] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+                }
+                if (rota == 2) {
+                    while (py + dc + 1 < 19 && box[py + 1 + dc][px + 1] == 0 && box[py + 2 + dc][px - 1] == 0 && box[py + 2 + dc][px] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px + 1] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 2][px] = 0;
+                    box[py + 2][px - 1] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+                if (rota == 3) {
+                    while (py + dc + 1< 19 && box[py + 2 + dc][px] == 0 && box[py + 1 + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px - 1] = 0;
+                    box[py][px - 1] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 2][px] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+            }
+            if (rn == 4) {
+                if (rota == 0) {
+                    while (py + dc < 19 && box[py + 1 + dc][px] == 0 && box[py + 1 + dc][px + 1] == 0 && box[py + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px + 1] = 0;
+                    box[py][px - 1] = 0;
+                    box[py][px] = 0;
+                    box[py + 1][px] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+                if (rota == 1) {
+                    while (py + dc + 1 < 19 && box[py + 2 + dc][px] == 0 && box[py + 1 + dc][px + 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px] = 0;
+                    box[py + 1][px + 1] = 0;
+                    box[py + 2][px] = 0;
+                    box[py][px + 1] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+                }
+                if (rota == 2) {
+                    while (py + dc + 1 < 19 && box[py + 2 + dc][px] == 0 && box[py + 2 + dc][px + 1] == 0 && box[py + 1 + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px - 1] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 2][px + 1] = 0;
+                    box[py + 2][px] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+                if (rota == 3) {
+                    while (py + dc + 1 < 19 && box[py + 1 + dc][px] == 0 && box[py + 2 + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px - 1] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 2][px - 1] = 0;
+                    box[py][px] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+            }
+            if (rn == 5) {
+                if (rota == 0) {
+                    while (py + dc < 19 && box[py + 1 + dc][px] == 0 && box[py + 1 + dc][px + 1] == 0 && box[py + 1 + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px - 1] = 0;
+                    box[py][px + 1] = 0;
+                    box[py + 1][px + 1] = 0;
+                    box[py + 1][px] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+                if (rota == 1) {
+                    while (py + dc + 1 < 19 && box[py + 2 + dc][px] == 0 && box[py + 2 + dc][px + 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 2][px + 1] = 0;
+                    box[py][px] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 2][px] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+                if (rota == 2) {
+                    while (py + dc + 1 < 19 && box[py + 2 + dc][px - 1] == 0 && box[py + 1 + dc][px + 1] == 0 && box[py + 1 + dc][px] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px - 1] = 0;
+                    box[py + 2][px - 1] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 1][px + 1] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+                if (rota == 3) {
+                    while (py + dc + 1 < 19 && box[py + 2 + dc][px] == 0 && box[py + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py][px - 1] = 0;
+                    box[py][px] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 2][px] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+            }
+            if (rn == 6) {
+                if (rota == 0) {
+                    while (py + dc < 19 && box[py + 1 + dc][px] == 0 && box[py + 1 + dc][px + 1] == 0 && box[py + 1 + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px + 1] = 0;
+                    box[py + 1][px - 1] = 0;
+                    box[py + 1][px] = 0;
+                    box[py][px - 1] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+                if (rota == 1) {
+                    while (py + dc + 1 < 19 && box[py + 2 + dc][px] == 0 && box[py + dc][px + 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py][px] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 2][px] = 0;
+                    box[py][px + 1] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+                if (rota == 2) {
+                    while (py + dc + 1 < 19 && box[py + 1 + dc][px] == 0 && box[py + 2 + dc][px + 1] == 0 && box[py + 1 + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px + 1] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 1][px - 1] = 0;
+                    box[py + 2][px + 1] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+                if (rota == 3) {
+                    while (py + dc + 1 < 19 && box[py + 2 + dc][px] == 0 && box[py + 2 + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py][px] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 2][px] = 0;
+                    box[py + 2][px - 1] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+            }
+            if (rn == 7) {
+                if (rota == 0) {
+                    while (py + dc < 19 && box[py + 1 + dc][px] == 0 && box[py + 1 + dc][px + 1] == 0 && box[py + 1 + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px - 1] = 0;
+                    box[py + 1][px + 1] = 0;
+                    box[py + 1][px] = 0;
+                    box[py][px] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+                if (rota == 1) {
+                    while (py + dc + 1 < 19 && box[py + 2 + dc][px] == 0 && box[py + 1 + dc][px + 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px + 1] = 0;
+                    box[py][px] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 2][px] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+                if (rota == 2) {
+                    while (py + dc + 1 < 19 && box[py + 2 + dc][px] == 0 && box[py + 1 + dc][px + 1] == 0 && box[py + 1 + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px - 1] = 0;
+                    box[py + 1][px + 1] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 2][px] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+                if (rota == 3) {
+                    while (py + dc + 1 < 19 && box[py + 2 + dc][px] == 0 && box[py + 1 + dc][px - 1] == 0) {
+                        dc += 1;
+                    }
+                    box[py + 1][px - 1] = 0;
+                    box[py][px] = 0;
+                    box[py + 1][px] = 0;
+                    box[py + 2][px] = 0;
+                    time = 8;
+                    py = py + dc - 1;
+                    score += (dc - 1) * 2;
+                    dc = 0;
+
+                }
+            }
+        }
+    }
+
+    document.onkeyup = up;
+    function up(event) {
+        if (event.which == 40) {
+            clearInterval(timerId);
+            timerId = setInterval(block, 200);
+        }
+    }
+    function change() {
+        for (var i = 0; i < 7; i++) {
+            if (i == 0) {
+                rrn = Math.floor(Math.random() * 7) + 1;
+            }
+            if (i == 1) {
+                rrn1 = Math.floor(Math.random() * 7) + 1;
+                while (rrn1 == rrn) {
+                    rrn1 = Math.floor(Math.random() * 7) + 1;
+                }
+            }
+            if (i == 2) {
+                rrn2 = Math.floor(Math.random() * 7) + 1;
+                while (rrn2 == rrn1 || rrn2 == rrn) {
+                    rrn2 = Math.floor(Math.random() * 7) + 1;
+                }
+            }
+            if (i == 3) {
+                rrn3 = Math.floor(Math.random() * 7) + 1;
+                while (rrn3 == rrn1 || rrn3 == rrn2 || rrn3 == rrn) {
+                    rrn3 = Math.floor(Math.random() * 7) + 1;
+                }
+            }
+            if (i == 4) {
+                rrn4 = Math.floor(Math.random() * 7) + 1;
+                while (rrn4 == rrn1 || rrn4 == rrn2 || rrn4 == rrn3 || rrn4 == rrn) {
+                    rrn4 = Math.floor(Math.random() * 7) + 1;
+                }
+            }
+            if (i == 5) {
+                rrn5 = Math.floor(Math.random() * 7) + 1;
+                while (rrn5 == rrn1 || rrn5 == rrn2 || rrn5 == rrn3 || rrn5 == rrn4 || rrn5 == rrn) {
+                    rrn5 = Math.floor(Math.random() * 7) + 1;
+                }
+            }
+            if (i == 6) {
+                rrn6 = Math.floor(Math.random() * 7) + 1;
+                while (rrn6 == rrn1 || rrn6 == rrn2 || rrn6 == rrn3 || rrn6 == rrn4 || rrn6 == rrn5 || rrn6 == rrn) {
+                    rrn6 = Math.floor(Math.random() * 7) + 1;
+                }
+            }
+        }
+        rn_count = 0;
+    }
+</script>
+<style>
+    td {
+        border: gray 1px solid;
+        width: 30px;
+        height: 30px;
+        margin: 0px;
+    }
+
+    tr {
+        display: flex;
+    }
+
+    .left {
+        border: none;
+        font-size: 17px;
+    }
+
+    .nexts {
+        padding-left: 50px;
+    }
+
+    .next1 {
+        display: flex;
+        padding-bottom: 10px;
+    }
+
+    .next1 td {
+        width: 20px;
+        height: 20px;
+
+    }
+
+    .title_next {
+        border: 1px;
+        text-align: center;
+    }
+
+    body {
+        text-align: center;
+        margin: 0px;
+        align-content: center;
+        background-color: Linen;
+    }
+    .hold1 {
+        margin: 0px;
+        width: 200px;
+    }
+    .hold1 td{
+        width: 30px;
+        height: 30px;
+
+
+    }
+    .score{
+        width: 100%;
+        text-align: right;
+        background-color: white;
+        font-size: 25px;
+        padding-right: 10px;
+        height: auto;
+        border-left: 0;
+    }
+    .scoreboard{
+        width: 100%;
+        text-align: left;
+        background-color: white;
+        font-size: 25px;
+        padding-left: 10px;
+        height: auto;
+        font-family: "ゴシック16×16ドット";
+        border-right: 0;
+    }
+    .hold_text{
+        text-align: center;
+        width: 140px;
+    }
+    .next{
+        text-align: center;  
+    }
+    .game{
+        display: inline-block;
+        display: flex;
+        margin: auto;
+        width: 60%;
+    }
+    .info td{
+        width: 200px;
+        background-color: white;
+        border: none;
+        text-align: left;
+}
+    .information{
+        width: 250px;
+        border:1px gray;
+        margin-top: 200px;
+        padding-left: 50px;
+        background-color: white;
+        position: fixed;
+        left: 50px;
+        bottom: 50px;
+        text-align: left;
+    }
+    .hold{
+        width: 40%;
+    }
+</style>
